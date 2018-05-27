@@ -30,43 +30,43 @@ function gpio($gpio) {
     // Read pin status
     exec("gpio -x mcp23017:$pin_base:$i2c_addr read $pin", $result);
     
-	return $result[0];
+    return $result[0];
 }
 
 // Return display css
 function show_hide($pin) {
     global $gpios;
     
-	return (bool)$gpios[$pin][0] ? '' : ' style="display: none;"';
+    return (bool)$gpios[$pin][0] ? '' : ' style="display: none;"';
 }
 
 // Return style class
 function pin_class($pin) {
     global $gpios;
     
-	return (bool)$gpios[$pin][0] ? ' high' : '';
+    return (bool)$gpios[$pin][0] ? ' high' : '';
 }
 
 // Return class
 function ssr_class($ssr) {
-	return (bool)$ssr ? ' enabled' : '';
+    return (bool)$ssr ? ' enabled' : '';
 }
 
 // Toggle GPIO state & return
 function gpio_toggle($gpio) {
-	global $pin_base, $i2c_addr;
+    global $pin_base, $i2c_addr;
     
     // Swap bool
-	$pin = $pin_base + (int)$gpio;
+    $pin = $pin_base + (int)$gpio;
     
     // Set pin mode to output (disabled, done at page load)
-	//exec("gpio -x mcp23017:$pin_base:$i2c_addr mode $pin out");
+    //exec("gpio -x mcp23017:$pin_base:$i2c_addr mode $pin out");
     
     // Toggle pin output
-	exec("gpio -x mcp23017:$pin_base:$i2c_addr toggle $pin $toggle");
-	
+    exec("gpio -x mcp23017:$pin_base:$i2c_addr toggle $pin $toggle");
+    
     // Return new status
-	return gpio($gpio);
+    return gpio($gpio);
 }
 
 // AJAX requests
@@ -99,7 +99,7 @@ foreach ($pin_modes as $gpio => $mode) {
     $pin = $pin_base + (int)$gpio;
     
     // Set pin mode
-	exec("gpio -x mcp23017:$pin_base:$i2c_addr mode $pin $mode");
+    exec("gpio -x mcp23017:$pin_base:$i2c_addr mode $pin $mode");
 }
 
 ?>
