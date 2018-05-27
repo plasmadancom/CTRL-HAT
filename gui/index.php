@@ -83,7 +83,7 @@ require (__DIR__.'/src/inc/functions.php');
                 <img class="logo" src="src/img/ctrl-hat-logo.png" alt="CTRL HAT" width="200px" height="20px" />
                 <div class="intro">
                     <h3>Pinout Guide &amp; Interactive GUI</h3>
-                    <p>This landing page is designed to be both a user guide & quick reference to the CTRL HAT pinout, plus an interactive GUI to get you started. Check-out the <a href="https://github.com/plasmadancom/CTRL-HAT" target="_blank">GitHub page</a> for more information.</p><br />
+                    <p>This landing page is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout, plus an interactive GUI to get you started. Check-out the <a href="https://github.com/plasmadancom/CTRL-HAT" target="_blank">GitHub page</a> for more information.</p><br />
                     <h1>Go ahead, select a pin from the board!</h1>
                 </div>
                 
