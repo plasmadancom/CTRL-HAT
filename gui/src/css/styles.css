@@ -1,0 +1,382 @@
+body, ul, li, a, p, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-width: 800px;
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+.container {
+    text-align: center;
+    font-size: 0;
+    padding: 10px 10px 0;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.content h1 {
+    font-size: 1.8eml
+}
+
+.content h2 {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    font-family: palatino linotype, book antiqua, Palatino, serif;
+}
+
+.content p, .content pre {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 150%;
+}
+
+.content pre {
+    font-family: Consolas, monaco, monospace;
+}
+
+.content h3 {
+    color: #d33682;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+.content h4 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.content article {
+    min-height: 488px;
+    background: #ebe6d3;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.content article a {
+    color: #859900;
+    text-decoration: underline;
+}
+
+.content article a:hover {
+    text-decoration: none;
+}
+
+.content article ul {
+    margin: 10px 0 10px 20px;
+}
+
+.content article .logo {
+    margin-bottom: 10px;
+}
+
+.content article .button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #cf866c;
+	box-shadow: inset 0px 1px 0px 0px #cf866c;
+	background-color: #d0451b;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #942911;
+	display: inline-block;
+	cursor: pointer;
+	color: #fff;
+	font-size: 13px;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow:0px 1px 0px #854629;
+    margin-bottom: 10px;
+}
+
+.content article .button:hover {
+	background-color: #bc3315;
+}
+
+.content article .button:active {
+	position: relative;
+	top: 1px;
+}
+
+.content article .button-disabled {
+	-moz-box-shadow: inset 0px 1px 0px 0px #91b8b3;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #91b8b3;
+	box-shadow: inset 0px 1px 0px 0px #91b8b3;
+	border: 1px solid #566963;
+    cursor: default;
+	color: #c7c7c7;
+	text-shadow: 0px 1px 0px #2b665e;
+    background-color: #768d87 !important;
+    top: 0 !important;
+}
+
+.content .log {
+    width: 100%;
+    min-height: 82px;
+    background: #fff;
+    outline: none;
+    padding: 5px;
+    resize: vertical;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.board {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    margin: 0 10px 10px 130px;
+    width: 600px;
+    height: 518px;
+    font-size: 16px;
+}
+
+.board:before {
+    content: " ";
+    position: absolute;
+    width: 600px;
+    height: 518px;
+    z-index: -1;
+    border-radius: 28px;
+    background: #266844 url("../img/ctrl-hat-board-graphic.gif");
+}
+
+.leds .led {
+    width: 30px;
+    height: 60px;
+    background: url("../img/ctrl-hat-led-graphic.png");
+    position: absolute;
+    top: 48px;
+    left: -30px;
+    z-index: -1;
+}
+
+.leds .led1 {
+    top: 95px;
+}
+
+.leds .led2 {
+    top: 142px;
+}
+
+.leds .led3 {
+    top: 189px;
+}
+
+.board-left, .board-right {
+    position: relative;
+    width: 300px;
+    height: 518px;
+    float: left;
+}
+
+.board-left:before, .board-left:after, .board-right:before, .board-right:after {
+    content: '';
+    display: block;
+    width: 27px;
+    height: 27px;
+    background: #fff;
+    border-radius: 50%;
+    border: 16px solid #f7df84;
+    position:absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.board-left:after, .board-right:after {
+    top: auto;
+    bottom: 3px;
+}
+
+.board-right:before, .board-right:after {
+    left: auto;
+    right: 3px;
+}
+
+.board-left ul {
+    list-style: none;
+    position: absolute;
+    top: 239px;
+}
+
+.board-left a {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    line-height: 23px;
+    height: 22px;
+    margin-bottom: 2px;
+}
+
+.board-left .num {
+    color: #073642;
+    font-size: .8em;
+    opacity: .8;
+    text-indent: 0;
+    position: absolute;
+    left: 30px;
+}
+
+.board-left .pin {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: #2d3436;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: auto;
+    right: 2px;
+}
+
+.board-left .pin:after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #fdf6e3;
+    border-radius: 100%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.board-left .odd li {
+    text-indent:68px;
+    position: relative;
+    left: -127px;
+}
+
+.board-left .odd a {
+    direction: rtl;
+    width: 158px;
+    color: #063541;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+
+.board-left .odd .num {
+    text-align: right;
+    left: auto;
+    right: 38px;
+}
+
+.board-left .even {
+    left: 34px;
+}
+
+.board-left .even li {
+    text-indent: 60px;
+}
+
+.board-left .even a {
+    color: #e9e5d2;
+    width: 150px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+}
+
+.board-left .even .num {
+    color: #ccc;
+}
+
+.board-left .even .pin {
+    left: 2px;
+    top: 2px;
+}
+
+.board-left a:hover, .board-left .active a {
+    background: #faf0e6;
+    color: #063541;
+}
+
+.board-left a:hover .num, .board-left .active .num {
+    color: #073642;
+}
+
+.board-left li a small {
+    direction: ltr;
+    unicode-bidi: embed;
+    font-size: .7em;
+}
+
+.board-left .high .pin {
+    background: #c2321d;
+}
+
+.board-right .ssr {
+    display: none;
+    width: 407px;
+    height: 71px;
+    background: url("../img/ctrl-hat-relay-graphic.png");
+    position: absolute;
+    top: 115px;
+    left: -204px;
+    z-index: -1;
+}
+
+.board-right .ssr1 {
+    top: 215px;
+}
+
+.board-right .ssr2 {
+    top: 315px;
+}
+
+.board-right .ssr3 {
+    top: 415px;
+}
+
+.board-right .enabled {
+    display: block;
+}
+
+.gpiobase {
+    width: 48px;
+    height: 216px;
+    background: #2d3436;
+    position: absolute;
+    top: 238px;
+    left: 8px;
+}
+
+.footer {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #5f8645;
+}
+
+@media only screen and (max-width: 1359px) {
+    .content {
+        width: 100%;
+    }
+    
+    .content article {
+        margin: 0 10px;
+        min-height: 0;
+    }
+}
