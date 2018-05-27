@@ -36,10 +36,10 @@ $pin_modes = array(
     1 => 'out',       // GPA1 (Solid State Relay CH1)
     2 => 'out',       // GPA2 (Solid State Relay CH2)
     3 => 'out',       // GPA3 (Solid State Relay CH3)
-    4 => 'in',       // GPA4
-    5 => 'in',       // GPA5
-    6 => 'up',       // GPA6
-    7 => 'up',       // GPA7
+    4 => 'out',       // GPA4
+    5 => 'out',       // GPA5
+    6 => 'out',       // GPA6
+    7 => 'out',       // GPA7
     
     // Bank B
     8 => 'out',       // GPB0
