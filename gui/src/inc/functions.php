@@ -3,7 +3,7 @@
 /*
  * functions.php - CTRL HAT functions for web GUI
  * 
- * Copyright (C) 2018 Dan Jones - https://plasmadan.com
+ * Copyright (C) 2019 Dan Jones - https://plasmadan.com
  * 
  * 
  * -----------------------------------------------------------------------------
