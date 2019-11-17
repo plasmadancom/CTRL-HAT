@@ -9,11 +9,7 @@ CTRL HAT is a Raspberry Pi HAT I/O board which accepts 4x Crydom style SIP PCB m
 
 ## Motivation
 
-This project is an evolution of prototype I/O & relay inteface boards used primarily for home automation purposes. We saw a need for higher current capacity solid state relay inteface boards for switching inductive loads such as motors, without the need for costly extra hardware such as SSR modules or contactors.
-
-The high EMC and high inrush current capability make this relay suitable for industrial applications such as lighting control, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
-
-Home cinema build log: https://www.avforums.com/threads/ongoing-plasmadans-living-room-cinema-office-build.1992617/
+This project is an evolution of prototype I/O & relay inteface boards we have created primarily for home automation purposes. We saw a need for higher current capacity solid state relay inteface boards for switching inductive loads such as motors, without the need for costly extra hardware such as SSR modules or contactors.
 
 ## Responsive Web GUI
 
