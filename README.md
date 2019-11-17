@@ -1,5 +1,20 @@
 # CTRL-HAT
 
+CTRL HAT is a Raspberry Pi HAT I/O board which accepts 4x Crydom style SIP PCB mounted solid state relays. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
+
+## Features
+
+* 4x Solid State Relay Control
+* 16 Port* GPIO Expander
+
+## Motivation
+
+This project is an evolution of prototype I/O & relay inteface boards used primarily for home automation purposes. We saw a need for higher current capacity solid state relay inteface boards for switching inductive loads such as motors, without the need for costly extra hardware such as SSR modules or contactors. We realisied that 
+
+The high EMC and high inrush current capability make this relay suitable for industrial applications such as lighting control, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
+
+Home cinema build log: https://www.avforums.com/threads/ongoing-plasmadans-living-room-cinema-office-build.1992617/
+
 ## Responsive Web GUI
 
 ![CTRL HAT Web GUI](/ctrl-hat-web-gui.gif)
@@ -17,6 +32,21 @@ While built primarily to fit onto a Raspberry Pi, CTRL HAT can be used with any 
 ## Stackable
 
 Multiple CTRL HATs can easily be stacked using standoffs. Since they work off the I2C bus, you can have up to 8 devices on a single Pi, and not just CTRL HATs, other I2C devices can work along-side CTRL HAT simply by configuring the I2C address.
+
+## Known Compatible Solid State Relays
+
+* Kudom KSD240D5-W - 5A 48-280Vrms [(Zero Cross)](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575)  [(Random Turn On)](https://www.rapidonline.com/kudom-ksd240d5r-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-random-turn-on-60-1574)
+* Crydom CX240D5 - 5A 12-280Vrms [(Zero Cross)](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) [(Random Turn On)](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825)
+* Crydom PowerFin PF240D25 - 25A 12-280Vrms [(Zero Cross)](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) [(Random Turn On)](https://uk.farnell.com/crydom/pf240d25r/ssr-25a-240vac/dp/1613907) (see maximum ratings)
+
+Most SIP solid state relays suited to a control voltage of 5VDC will work. CTRL HAT can be configured to accept relays with other DC control voltages by using a seperate power supply.
+
+## Maximum Ratings
+
+* 10A @ 250V (ambient temperature)
+* 16A @ 250V (forced air cooling recommended, ~30° temprature rise)
+
+Exeeding these limits may overload the PCB.
 
 # Web GUI Installation
 
