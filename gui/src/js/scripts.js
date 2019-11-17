@@ -1,7 +1,7 @@
 /*
  * scripts.js - CTRL HAT jQuery scripts for web GUI
  * 
- * Copyright (C) 2018 Dan Jones - https://plasmadan.com
+ * Copyright (C) 2019 Dan Jones - https://plasmadan.com
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -19,6 +19,7 @@
 
 $(document).ready(function() {
     // Parse settings from DOM
+    var dev_mode = $('#dev_mode').val() == 'true';
     var pin_base = parseInt($('#pin_base').val());
     var i2c_addr = parseInt($('#i2c_addr').val()).toString(16);
     
@@ -90,13 +91,18 @@ $(document).ready(function() {
         print_log('Done.');
     }
     
-    $('.board a').on('click', function() {
+    // Pin selection
+    function pin_click(e) {
         // Collect GPIO data
-        var pin = parseInt($(this).data('pin'));
-        var gpio = parseInt($(this).data('gpio'));
-        var logic = parseInt($(this).data('logic'));
-        var mode = $(this).data('mode');
-        var name = $(this).data('name');
+        var pin = parseInt(e.data('pin'));
+        var gpio = parseInt(e.data('gpio'));
+        var logic = parseInt(e.data('logic'));
+        var mode = e.data('mode');
+        var name = e.data('name');
+        
+        // Highlight selected CH
+        $('.ssr').removeClass('selected');
+        if (gpio == 0 || gpio == 1 || gpio == 2 || gpio == 3) $('.ssr' + gpio).addClass('selected');
         
         // Highlight selected pin
         $('.board .active').removeClass('active');
@@ -105,18 +111,6 @@ $(document).ready(function() {
         // Disable button for inputs
         if (mode !== 'out') $('article .button').addClass('button-disabled');
         else $('article .button').removeClass('button-disabled');
-        
-        // Highlight Selected CH
-        if (gpio == 0 || gpio == 1 || gpio == 2 || gpio == 3) {
-            // Hide unselected
-            $('.board-right .ssr:not(.ssr' + gpio + ')').hide();
-            
-            // Show selected if enabled
-            if ($('.ssr' + gpio).hasClass('enabled')) {
-                $('.board-right .ssr' + gpio).show();
-            }
-        }
-        else $('.board-right .enabled').show();
         
         // Swap content
         $('.content .intro').hide();
@@ -140,17 +134,53 @@ $(document).ready(function() {
         $('article .logic').html(print_logic(logic));
         $('article .mode').html(print_mode(mode));
         $('article .i2c_addr').html('0x' + i2c_addr);
+    }
+    
+    // Notify user if development mode enabled
+    if (dev_mode) {
+        $('.dev_mode_label').show();
+        print_log('Development mode enabled.');
+    }
+    
+    // Click on pin
+    $('.board a').on('click', function(e) {
+        e.preventDefault();
+        
+        pin_click($(this));
     });
-
+    
+    // Click on SSR
+    $('.ssr').on('click', function(e) {
+        e.preventDefault();
+        
+        // Find CH in DOM
+        var ch = $(this).attr('class').split(/\s+/)[1];
+        var elm = $('.' + ch + ' a');
+        
+        pin_click(elm);
+    });
+    
     // Toggle GPIO
-    $('.toggle').on('click', function() {
+    $('.toggle').on('click', function(e) {
+        e.preventDefault();
+        
         if ($(this).hasClass('button-disabled')) return;
         
         // Collect GPIO data
         var gpio = parseInt($(this).data('gpio'));
+        var pin = $('.gpio' + gpio);
         
         // State is reversed because this is a click event, not a change event
         print_log('Toggle gpio ' + parseInt(pin_base + gpio) + '...', true);
+        
+        // Spoof result for development
+        if (dev_mode) {
+            result = pin.hasClass('high') ? 0 : 1;
+            
+            update_gui(gpio, result);
+            
+            return;
+        }
         
         $.ajax({
             type: 'POST',
