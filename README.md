@@ -19,6 +19,8 @@ Once installed on your Raspberry Pi, this interactive GUI allows quick & easy co
 
 Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have installed on your Pi!
 
+By default, these additional GPIOs operate at 5V (unlike Raspberry Pi GPIOs which are 3.3V). CTRL HAT can also be configured to operate at 3.3V if you prefer, by changing the solder jumper from 5V to 3.3V.
+
 ## Not Just Raspberry Pi
 
 We Built CTRL HAT to work with any device which features an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
@@ -31,24 +33,24 @@ Multiple CTRL HATs can easily be stacked using standoffs. Since they work off th
 
 ![Crydom SSR Mechanical Specifications](/img/crydom-ssr-mechanical-specifications.gif)
 
-Most SIP solid state relays suited to a control voltage of 5VDC will work. CTRL HAT can be configured to accept relays with other DC control voltages by using a separate power supply.
+Any solid state relay which physically fits onto CTRL HAT and is suited to a control voltage of 5VDC will work. CTRL HAT can also be configured to accept relays with other DC control voltages by using a dedicated power supply.
 
-### Zero Cross Turn On - Resistive Loads
+### Zero Cross Turn On (Resistive Loads)
 
 * [Kudom KSD240D5-W](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575) - 5A 48-280Vrms
 * [Crydom CX240D5](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) - 5A 12-280Vrms
 * [Crydom PowerFin PF240D25](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
-### Random Turn On - Inductive Loads
+### Random Turn On (Inductive Loads)
 
 * [Kudom KSD240D5R-W](https://www.rapidonline.com/kudom-ksd240d5r-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-random-turn-on-60-1574) - 5A 48-280Vrms
 * [Crydom CX240D5R](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825) - 5A 12-280Vrms
 * [Crydom PowerFin PF240D25R](https://uk.farnell.com/crydom/pf240d25r/ssr-25a-240vac/dp/1613907) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
-### MOSFET - DC Loads
+### MOSFET (DC Loads)
 
-* [CMX60D10](https://uk.farnell.com/sensata-crydom/cmx60d10/ssr-10a-60vdc/dp/1200211) - 10A 0-60VDC
-* [CMX100D10](https://uk.farnell.com/sensata-crydom/cmx100d10/ssr-10a-100v-sip/dp/1779773) - 10A 0-100VDC
+* [Crydom CMX60D10](https://uk.farnell.com/sensata-crydom/cmx60d10/ssr-10a-60vdc/dp/1200211) - 10A 0-60VDC
+* [Crydom CMX100D10](https://uk.farnell.com/sensata-crydom/cmx100d10/ssr-10a-100v-sip/dp/1779773) - 10A 0-100VDC
 
 ## Maximum Ratings
 
