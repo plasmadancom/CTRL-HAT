@@ -29,26 +29,26 @@ Multiple CTRL HATs can easily be stacked using standoffs. Since they work off th
 
 ## Known Compatible Solid State Relays
 
-![Crydom Mechanical Specifications](/img/crydom-mechanical-specifications.gif)
+![Crydom SSR Mechanical Specifications](/img/crydom-ssr-mechanical-specifications.gif)
 
 Most SIP solid state relays suited to a control voltage of 5VDC will work. CTRL HAT can be configured to accept relays with other DC control voltages by using a separate power supply.
 
 ### Zero Cross Turn On - Resistive Loads
 
-* [Kudom KSD240D5-W](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575) - (5A 48-280Vrms)
-* [Crydom CX240D5](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) - (5A 12-280Vrms)
-* [Crydom PowerFin PF240D25](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) - (25A 12-280Vrms)
+* [Kudom KSD240D5-W](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575) - 5A 48-280Vrms
+* [Crydom CX240D5](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) - 5A 12-280Vrms
+* [Crydom PowerFin PF240D25](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
 ### Random Turn On - Inductive Loads
 
-* [Kudom KSD240D5R-W](https://www.rapidonline.com/kudom-ksd240d5r-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-random-turn-on-60-1574) - (5A 48-280Vrms)
-* [Crydom CX240D5R](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825) - (5A 12-280Vrms)
-* [Crydom PowerFin PF240D25R](https://uk.farnell.com/crydom/pf240d25r/ssr-25a-240vac/dp/1613907) - (25A 12-280Vrms)
+* [Kudom KSD240D5R-W](https://www.rapidonline.com/kudom-ksd240d5r-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-random-turn-on-60-1574) - 5A 48-280Vrms
+* [Crydom CX240D5R](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825) - 5A 12-280Vrms
+* [Crydom PowerFin PF240D25R](https://uk.farnell.com/crydom/pf240d25r/ssr-25a-240vac/dp/1613907) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
 ### MOSFET - DC Loads
 
-* [CMX60D10](https://uk.farnell.com/sensata-crydom/cmx60d10/ssr-10a-60vdc/dp/1200211) - (10A 0-60VDC)
-* [CMX100D10](https://uk.farnell.com/sensata-crydom/cmx100d10/ssr-10a-100v-sip/dp/1779773) - (10A 0-100VDC)
+* [CMX60D10](https://uk.farnell.com/sensata-crydom/cmx60d10/ssr-10a-60vdc/dp/1200211) - 10A 0-60VDC
+* [CMX100D10](https://uk.farnell.com/sensata-crydom/cmx100d10/ssr-10a-100v-sip/dp/1779773) - 10A 0-100VDC
 
 ## Maximum Ratings
 
