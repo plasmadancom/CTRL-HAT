@@ -1,15 +1,13 @@
 # CTRL-HAT
 
-CTRL HAT is a Raspberry Pi HAT I/O board which accepts 4x Crydom style SIP PCB mounted solid state relays. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
+A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays, typically used for industrial control applications.
+
+This project is an evolution of previous I/O & relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
 
 ## Features
 
 * 4x Solid State Relay Control
 * 16 Port* GPIO Expander
-
-## Motivation
-
-This project is an evolution of prototype I/O & relay inteface boards we have created primarily for home automation purposes. We saw a need for higher current capacity solid state relay inteface boards for switching inductive loads such as motors, without the need for costly extra hardware such as SSR modules or contactors.
 
 ## Responsive Web GUI
 
@@ -21,9 +19,9 @@ Once installed on your Raspberry Pi, this interactive GUI allows quick & easy co
 
 Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have installed on your Pi!
 
-## Cross Compatible*
+## Not Just Raspberry Pi
 
-While built primarily to fit onto a Raspberry Pi, CTRL HAT can be used with any device that features an I2C bus. The 2-wire I2C pins are labeled to make it easy to connect to your preferred device.
+We Built CTRL HAT to work with any device which features an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
 
 ## Stackable
 
@@ -35,14 +33,20 @@ Multiple CTRL HATs can easily be stacked using standoffs. Since they work off th
 * Crydom CX240D5 - 5A 12-280Vrms [(Zero Cross)](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) [(Random Turn On)](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825)
 * Crydom PowerFin PF240D25 - 25A 12-280Vrms [(Zero Cross)](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) [(Random Turn On)](https://uk.farnell.com/crydom/pf240d25r/ssr-25a-240vac/dp/1613907) (see maximum ratings)
 
-Most SIP solid state relays suited to a control voltage of 5VDC will work. CTRL HAT can be configured to accept relays with other DC control voltages by using a seperate power supply.
+Most SIP solid state relays suited to a control voltage of 5VDC will work. CTRL HAT can be configured to accept relays with other DC control voltages by using a separate power supply.
 
 ## Maximum Ratings
 
 * 10A @ 250V (ambient temperature)
-* 16A @ 250V (forced air cooling recommended, ~30° temprature rise)
+* 16A @ 250V (forced air cooling recommended, ~30° temperature rise)
 
-Exeeding these limits may overload the PCB.
+Exceeding these limits may overload the PCB.
+
+## Known Compatible Cases
+
+* ModMyPi Modular RPi 2/3 Case
+
+There are countless cases compatible with CTRL HAT, limited only by the height of the solid state relays used.
 
 # Web GUI Installation
 
