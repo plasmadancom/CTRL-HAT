@@ -128,6 +128,7 @@ $(document).ready(function() {
         $('article').removeClass().addClass('pindata' + gpio);
         $('article .pinname').html(name);
         $('article .physpin').html(pin);
+        $('article .pinbase').html(pin_base);
         $('article .io').html(pin_base + gpio);
         $('article .toggle').data({'gpio': gpio, 'logic': logic});
         $('article .status').html(print_status(logic, mode));
