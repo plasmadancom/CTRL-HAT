@@ -109,32 +109,32 @@ $(document).ready(function() {
         $('.board .pin' + pin).addClass('active');
         
         // Disable button for inputs
-        if (mode !== 'out') $('article .button').addClass('button-disabled');
-        else $('article .button').removeClass('button-disabled');
+        if (mode !== 'out') $('.info .button').addClass('button-disabled');
+        else $('.info .button').removeClass('button-disabled');
         
         // Swap content
-        $('.content .intro').hide();
-        $('.content .pindata, .content .log').show();
+        $('.info .intro').hide();
+        $('.info .pindata, .info .log').show();
         
         // Hide guide for interrupt pins
-        if (gpio < 0) $('.content .guide, .content .int-hide').hide();
-        else $('.content .guide, .content .int-hide').show();
+        if (gpio < 0) $('.info .guide, .info .int-hide').hide();
+        else $('.info .guide, .info .int-hide').show();
         
         // Hide data for unconfigured gpios
         if (mode == 'unconfigured') $('.status-wrapper').hide();
         else $('.status-wrapper').show();
         
         // Update DOM
-        $('article').removeClass().addClass('pindata' + gpio);
-        $('article .pinname').html(name);
-        $('article .physpin').html(pin);
-        $('article .pinbase').html(pin_base);
-        $('article .io').html(pin_base + gpio);
-        $('article .toggle').data({'gpio': gpio, 'logic': logic});
-        $('article .status').html(print_status(logic, mode));
-        $('article .logic').html(print_logic(logic));
-        $('article .mode').html(print_mode(mode));
-        $('article .i2c_addr').html('0x' + i2c_addr);
+        $('.info').attr('class', 'info').addClass('pindata' + gpio);
+        $('.info .pinname').html(name);
+        $('.info .physpin').html(pin);
+        $('.info .pinbase').html(pin_base);
+        $('.info .io').html(pin_base + gpio);
+        $('.info .toggle').data({'gpio': gpio, 'logic': logic});
+        $('.info .status').html(print_status(logic, mode));
+        $('.info .logic').html(print_logic(logic));
+        $('.info .mode').html(print_mode(mode));
+        $('.info .i2c_addr').html('0x' + i2c_addr);
     }
     
     // Notify user if development mode enabled
@@ -162,7 +162,7 @@ $(document).ready(function() {
     });
     
     // Toggle GPIO
-    $('.toggle').on('click', function(e) {
+    $('.info .toggle').on('click', function(e) {
         e.preventDefault();
         
         if ($(this).hasClass('button-disabled')) return;

@@ -25,7 +25,6 @@ require (__DIR__.'/src/inc/functions.php');
 ?>
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,9 +32,8 @@ require (__DIR__.'/src/inc/functions.php');
     <link href="src/css/styles.css" rel="stylesheet" />
     <script src="src/js/jquery.min.js"></script>
 </head>
-
 <body>
-    <!-- Development mode -->
+    <!-- Dev mode -->
     <input id="dev_mode" type="hidden" value="<?= $dev_mode ?>">
     
     <!-- Settings -->
@@ -83,42 +81,40 @@ require (__DIR__.'/src/inc/functions.php');
                 </div>
             </div>
         </div>
-        <div class="content">
-            <article>
-                <img class="logo" src="src/img/ctrl-hat-logo.png" alt="CTRL HAT" width="200px" height="20px" />
-                <span class="dev_mode_label" style="display: none;">Development Mode<span class="dev_mode_tooltip">Allows local GUI development without the need for a Raspberry Pi.</span></span>
-                <div class="intro">
-                    <h3>Pinout Guide &amp; Interactive GUI</h3>
-                    <p>This landing page is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout, plus an interactive GUI to get you started. Check-out the <a href="https://github.com/plasmadancom/CTRL-HAT" target="_blank">GitHub page</a> for more information.</p><br />
-                    <h1>Go ahead, select a pin from the board!</h1>
-                </div>
+        <div class="info">
+            <span class="dev_mode_label" style="display: none;">Dev Mode<span class="dev_mode_tooltip">Test environment to demo the GUI without a Raspberry Pi.</span></span>
+            <img class="logo" src="src/img/ctrl-hat-logo.png" alt="CTRL HAT" width="200px" height="20px" />
+            <div class="intro">
+                <h3>Pinout Guide &amp; Interactive GUI</h3>
+                <p>This landing page is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout, plus an interactive GUI to get you started. Check-out the <a href="https://github.com/plasmadancom/CTRL-HAT" target="_blank">GitHub page</a> for more information.</p>
+                <h1>Go ahead, select a pin from the board!</h1>
+            </div>
+            
+            <!-- Placeholder gpio pin data -->
+            <div class="pindata gpio8" style="display: none;">
+                <h1 class="pinname"></h1>
+                <ul>
+                    <li>Physical pin <span class="physpin"></span></li>
+                    <li class="int-hide">Wiring Pi pin <span class="io"></span></li>
+                    <li class="int-hide">Currently <span class="status-wrapper"><span class="status"></span><span class="logic"></span>, </span><span class="mode"></span></li>
+                </ul>
                 
-                <!-- Placeholder gpio pin data -->
-                <div class="pindata gpio8" style="display: none;">
-                    <h1 class="pinname"></h1>
-                    <ul>
-                        <li>Physical pin <span class="physpin"></span></li>
-                        <li class="int-hide">Wiring Pi pin <span class="io"></span></li>
-                        <li class="int-hide">Currently <span class="status-wrapper"><span class="status"></span><span class="logic"></span>, </span><span class="mode"></span></li>
-                    </ul>
-                    
-                    <!-- Toggle output button -->
-                    <a href="#" class="button toggle" data-gpio="8">Toggle Output</a>
-                </div>
-                
-                <!-- WiringPi guide -->
-                <div class="guide" style="display: none;">
-                    <h3>WiringPi Guide</h3>
-                    <p></p>
-                    <h4>Read</h4>
-                    <pre>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> read <span class="io">108</span></pre>
-                    <h4>Write</h4>
-                    <pre>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> mode <span class="io">108</span> out<br>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> write <span class="io">108</span> 1</pre>
-                </div>
-                
-                <!-- System log area -->
-                <textarea class="log" placeholder="System log..." style="display: none;" readonly></textarea>
-            </article>
+                <!-- Toggle output button -->
+                <a href="#" class="button toggle" data-gpio="8">Toggle Output</a>
+            </div>
+            
+            <!-- WiringPi guide -->
+            <div class="guide" style="display: none;">
+                <h3>WiringPi Guide</h3>
+                <p></p>
+                <h4>Read</h4>
+                <pre>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> read <span class="io">108</span></pre>
+                <h4>Write</h4>
+                <pre>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> mode <span class="io">108</span> out<br>gpio -x mcp23017:<span class="pinbase" title="Pin Base">100</span>:<span class="i2c_addr" title="I&sup2;C Address">0x20</span> write <span class="io">108</span> 1</pre>
+            </div>
+            
+            <!-- System log area -->
+            <textarea class="log" placeholder="System log..." style="display: none;" readonly></textarea>
         </div>
     </div>
     <div class="footer">
