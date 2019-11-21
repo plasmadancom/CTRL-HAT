@@ -10,10 +10,12 @@ This project is an evolution of previous I/O & relay interface boards we have cr
 * 4x Solid State Relay Control
 * 16 Port* GPIO Expander
 
-## Responsive Web GUI
-![CTRL HAT Web GUI](/img/ctrl-hat-web-gui.gif)
+## Interactive Web GUI
+[![CTRL HAT Web GUI](/img/ctrl-hat-web-gui.gif)](http://ctrlhat.plasmadan.com/)
 
 Once installed on your Raspberry Pi, this interactive GUI allows quick & easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide & quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
+
+Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
 
 ## Built-in GPIO Expander
 
