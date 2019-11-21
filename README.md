@@ -1,4 +1,5 @@
 # CTRL-HAT
+![CTRL HAT Animated](/img/ctrl-hat-animated.gif)
 
 A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays, typically used for industrial control applications.
 
@@ -10,7 +11,6 @@ This project is an evolution of previous I/O & relay interface boards we have cr
 * 16 Port* GPIO Expander
 
 ## Responsive Web GUI
-
 ![CTRL HAT Web GUI](/img/ctrl-hat-web-gui.gif)
 
 Once installed on your Raspberry Pi, this interactive GUI allows quick & easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide & quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
