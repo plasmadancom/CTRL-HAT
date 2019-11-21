@@ -266,7 +266,7 @@ body {
 }
 
 .info {
-    min-height: 488px;
+    min-height: 480px;
     background: #ebe6d3;
     padding: 15px;
 }
@@ -276,7 +276,6 @@ body {
 }
 
 .info h1 {
-    color: #d33682;
     font-size: 1.3em;
     font-weight: 700;
 }
@@ -287,12 +286,16 @@ body {
 }
 
 .info h3 {
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 .info h4 {
     font-size: 1.2em;
     font-weight: 700;
+}
+
+.info .intro h1, .info h3 {
+    color: #d33682;
 }
 
 .info p, .info pre {
