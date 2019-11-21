@@ -52,7 +52,7 @@ body {
     height: 518px;
     z-index: -1;
     border-radius: 28px;
-    background: #266844 url("/src/img/ctrl-hat-board-graphic.gif");
+    background: #266844 url("../img/ctrl-hat-board-graphic.gif");
 }
 
 .content {
@@ -165,7 +165,7 @@ body {
 .leds .led {
     width: 30px;
     height: 60px;
-    background: url("/src/img/ctrl-hat-led-graphic.png");
+    background: url("../img/ctrl-hat-led-graphic.png");
     position: absolute;
     top: 48px;
     left: 100px;
@@ -331,7 +331,7 @@ body {
     display: none;
     width: 407px;
     height: 71px;
-    background: url("/src/img/ctrl-hat-relay-graphic.png");
+    background: url("../img/ctrl-hat-relay-graphic.png");
     position: absolute;
     top: 115px;
     left: -204px;
