@@ -19,9 +19,10 @@
  * -----------------------------------------------------------------------------
  */
 
-$dev_mode = false;    // Allows local GUI development
 $pin_base = 100;      // MCP23017 Pin Base
 $i2c_addr = 0x20;     // I2C Address (0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27)
+
+$dev_mode = false;    // Allows local GUI development
 
 /*
  * Here you can configure each gpio pin mode (input, output, pullup)

@@ -100,7 +100,7 @@ require (__DIR__.'/src/inc/functions.php');
                 </ul>
                 
                 <!-- Toggle output button -->
-                <a href="#" class="button toggle" data-gpio="8">Toggle Output</a>
+                <a href="#" class="toggle" data-gpio="8">Toggle Output</a>
             </div>
             
             <!-- WiringPi guide -->

@@ -25,12 +25,10 @@ $(document).ready(function() {
     
     // Return pin status in plain text
     function print_status(i, mode) {
-        if (mode == 'up') {
-            return !i ? 'active' : 'inactive';
-        }
+        // Swap status in pull-up mode 
+        var i = mode == 'up' ? !i : i;
         
         return i ? 'active' : 'inactive';
-            
     }
     
     // Return pin logic in plain text
@@ -60,6 +58,7 @@ $(document).ready(function() {
         var log = result ? i + ' ' : i + "\n";
         var out = $('.log');
         
+        // Append log and scroll
         if (out.length) out.append(log).scrollTop(out[0].scrollHeight - out.height());
     }
     
@@ -68,21 +67,19 @@ $(document).ready(function() {
         var pin = $('.gpio' + gpio);
         var led = $('.leds .led' + gpio);
         
+        pin.removeClass('high');
+        
         switch (result) {
             case 1:
-                pin.removeClass('high').addClass('high');
+                pin.addClass('high');
                 led.show();
                 
                 break;
             
             case 0:
-                pin.removeClass('high');
                 led.hide();
                 
                 break;
-            
-            default:
-                return false;
         }
         
         $('.pindata' + gpio + ' .status').html(print_status(result));
@@ -100,32 +97,42 @@ $(document).ready(function() {
         var mode = e.data('mode');
         var name = e.data('name');
         
-        // Highlight selected CH
-        $('.ssr').removeClass('selected');
-        if (gpio == 0 || gpio == 1 || gpio == 2 || gpio == 3) $('.ssr' + gpio).addClass('selected');
-        
-        // Highlight selected pin
-        $('.board .active').removeClass('active');
-        $('.board .pin' + pin).addClass('active');
-        
-        // Disable button for inputs
-        if (mode !== 'out') $('.info .button').addClass('button-disabled');
-        else $('.info .button').removeClass('button-disabled');
-        
-        // Swap content
+        // Display guide and hide intro
         $('.info .intro').hide();
         $('.info .pindata, .info .log').show();
         
-        // Hide guide for interrupt pins
-        if (gpio < 0) $('.info .guide, .info .int-hide').hide();
-        else $('.info .guide, .info .int-hide').show();
+        // Reset GUI
+        $('.ssr').removeClass('selected');
+        $('.board .active').removeClass('active');
+        $('.info .toggle').attr('class', 'toggle button-disabled');
+        $('.status-wrapper').show();
         
-        // Hide data for unconfigured gpios
-        if (mode == 'unconfigured') $('.status-wrapper').hide();
-        else $('.status-wrapper').show();
+        // Highlight selected SSR
+        if (0 <= gpio == gpio <= 3) $('.ssr' + gpio).addClass('selected');
+        
+        // Highlight selected pin
+        $('.board .pin' + pin).addClass('active');
+        
+        // Hide guide for interrupt pins
+        var guide = $('.info .guide, .info .int-hide');
+        gpio < 0 ? guide.hide() : guide.show();
+        
+        switch (mode) {
+            case 'out':
+                // Enable toggle button for outputs
+                $('.info .toggle').removeClass('button-disabled');
+                
+                break;
+            
+            case 'unconfigured':
+                // Hide data for unconfigured gpios
+                $('.status-wrapper').hide();
+                
+                break;
+        }
         
         // Update DOM
-        $('.info').attr('class', 'info').addClass('pindata' + gpio);
+        $('.info').attr('class', 'info pindata' + gpio);
         $('.info .pinname').html(name);
         $('.info .physpin').html(pin);
         $('.info .pinbase').html(pin_base);
@@ -135,12 +142,6 @@ $(document).ready(function() {
         $('.info .logic').html(print_logic(logic));
         $('.info .mode').html(print_mode(mode));
         $('.info .i2c_addr').html('0x' + i2c_addr);
-    }
-    
-    // Notify user if development mode enabled
-    if (dev_mode) {
-        $('.dev_mode_label').show();
-        print_log('Development mode enabled.');
     }
     
     // Click on pin
@@ -211,4 +212,11 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Notify user if development mode enabled
+    if (dev_mode) {
+        $('.dev_mode_label').show();
+        print_log('Development mode enabled.');
+    }
+    
 });
