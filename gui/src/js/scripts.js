@@ -197,7 +197,7 @@ $(document).ready(function() {
             setTimeout(function() {
                 log_response(request, result);
                 update_gui(gpio, result);
-            }, 500);
+            }, 200);
             
             return;
         }
