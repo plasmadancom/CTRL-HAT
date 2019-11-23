@@ -54,13 +54,34 @@ $(document).ready(function() {
     }
     
     // Print to log
-    function print_log(i, result=false) {
-        var log = result ? i + ' ' : i + "\n";
+    function print_log(log, response=false) {
         var out = $('.log');
+        
+        if (response) {
+            if (response !== true) {
+                // Append response to log
+                if (out.length) out.find('#' + response).after(log);
+                
+                return;
+            }
+            
+            // Mark new log lines awaiting response
+            var response = Date.now();
+            log += '<span id="' + Date.now() + '"></span>';
+        }
+        
+        log += "\n";
         
         // Append log and scroll
         if (out.length) out.append(log).scrollTop(out[0].scrollHeight - out.height());
+        
+        return response;
     }
+    
+    // Append result to request
+    function log_response(request, result) {
+        print_log('Done (output ' + print_status(result) + ').', request)
+    };
     
     // Update GUI
     function update_gui(gpio, result) {
@@ -68,24 +89,16 @@ $(document).ready(function() {
         var led = $('.leds .led' + gpio);
         
         pin.removeClass('high');
-        
-        switch (result) {
-            case 1:
-                pin.addClass('high');
-                led.show();
-                
-                break;
-            
-            case 0:
-                led.hide();
-                
-                break;
-        }
+        pin.find('a').data('logic', result);
         
         $('.pindata' + gpio + ' .status').html(print_status(result));
         $('.pindata' + gpio + ' .logic').html(print_logic(result));
         
-        print_log('Done.');
+        if (result) {
+            pin.addClass('high');
+            led.show();
+        }
+        else led.hide();
     }
     
     // Pin selection
@@ -137,7 +150,7 @@ $(document).ready(function() {
         $('.info .physpin').html(pin);
         $('.info .pinbase').html(pin_base);
         $('.info .io').html(pin_base + gpio);
-        $('.info .toggle').data({'gpio': gpio, 'logic': logic});
+        $('.info .toggle').data('gpio', gpio);
         $('.info .status').html(print_status(logic, mode));
         $('.info .logic').html(print_logic(logic));
         $('.info .mode').html(print_mode(mode));
@@ -173,13 +186,18 @@ $(document).ready(function() {
         var pin = $('.gpio' + gpio);
         
         // State is reversed because this is a click event, not a change event
-        print_log('Toggle gpio ' + parseInt(pin_base + gpio) + '...', true);
+        var request = print_log('Toggle gpio ' + parseInt(pin_base + gpio) + '... ', true);
         
         // Spoof result for development
         if (dev_mode) {
-            result = pin.hasClass('high') ? 0 : 1;
+            // Swap logic
+            result = pin.find('a').data('logic') ? 0 : 1;
             
-            update_gui(gpio, result);
+            // Spoof response delay
+            setTimeout(function() {
+                log_response(request, result);
+                update_gui(gpio, result);
+            }, 500);
             
             return;
         }
@@ -191,12 +209,13 @@ $(document).ready(function() {
             timeout: 5000,
             success: function(r) {
                 if (!$.trim(r)) {
-                    print_log('Ajax error!');
+                    print_log('Ajax error!', request);
                     return;
                 }
                 
                 var result = JSON.parse(r[0]);
                 
+                log_response(request, result);
                 update_gui(gpio, result);
             },
             complete: function() {
@@ -204,10 +223,10 @@ $(document).ready(function() {
             },
             error: function(xhr, textStatus, errorThrown) {
                 try {
-                    print_log(JSON.parse(xhr.responseText));
+                    print_log(JSON.parse(xhr.responseText), request);
                 }
                 catch(e) {
-                    print_log(textStatus);
+                    print_log(textStatus, request);
                 }
             }
         });
