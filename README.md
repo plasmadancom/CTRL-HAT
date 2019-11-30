@@ -25,7 +25,7 @@ By default, these additional GPIOs operate at 5V (unlike Raspberry Pi GPIOs whic
 
 ## Not Just Raspberry Pi
 
-We Built CTRL HAT to work with any device which features an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
+We built CTRL HAT to work with any device which features an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
 
 ## Stackable
 
@@ -39,7 +39,9 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 
 ### Zero Cross Turn On (Resistive Loads)
 
+* [Opto 22 MP240D4](https://uk.farnell.com/opto-22/mp240d4/ssr-4a-240vac/dp/7229082) - 4A 24-280Vrms
 * [Kudom KSD240D5-W](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575) - 5A 48-280Vrms
+* [Multicomp MCKSD380D5-W(037)](https://uk.farnell.com/multicomp/mcksd380d5-w-037/solid-state-relay-4vdc-32vdc-th/dp/2770575) - 5A 24-440Vrms
 * [Crydom CX240D5](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) - 5A 12-280Vrms
 * [Crydom PowerFin PF240D25](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
@@ -51,8 +53,11 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 
 ### MOSFET (DC Loads)
 
+* [Opto 22 DC60MP](https://uk.farnell.com/opto-22/dc60mp/ssr-60vdc-3a/dp/7229124) - 3A 0-60VDC
 * [Crydom CMX60D10](https://uk.farnell.com/sensata-crydom/cmx60d10/ssr-10a-60vdc/dp/1200211) - 10A 0-60VDC
 * [Crydom CMX100D10](https://uk.farnell.com/sensata-crydom/cmx100d10/ssr-10a-100v-sip/dp/1779773) - 10A 0-100VDC
+* [Crydom CMX200D3](https://uk.farnell.com/crydom/cmx200d3/ssr-sip-200vdc-3a-3-10vdc-in/dp/1936439) - 3A 0-200VDC
+* [Multicomp MCKSL60D20-L](https://uk.farnell.com/multicomp/mcksl60d20-l/solid-state-relay-3vdc-10vdc-th/dp/2770582) - 20A 0-60VDC - (see [maximum ratings](#maximum-ratings))
 
 ## Maximum Ratings
 

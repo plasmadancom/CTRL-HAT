@@ -58,8 +58,8 @@ $(document).ready(function() {
         var out = $('.log');
         
         if (response) {
+            // Append response to log
             if (response !== true) {
-                // Append response to log
                 if (out.length) out.find('#' + response).after(log);
                 
                 return;
@@ -81,7 +81,7 @@ $(document).ready(function() {
     // Append result to request
     function log_response(request, result) {
         print_log('Done (output ' + print_status(result) + ').', request)
-    };
+    }
     
     // Update GUI
     function update_gui(gpio, result) {
@@ -97,8 +97,11 @@ $(document).ready(function() {
         if (result) {
             pin.addClass('high');
             led.show();
+            
+            return;
         }
-        else led.hide();
+        
+        led.hide();
     }
     
     // Pin selection
@@ -165,7 +168,7 @@ $(document).ready(function() {
     });
     
     // Click on SSR
-    $('.ssr').on('click', function(e) {
+    $('.board .ssr').on('click', function(e) {
         e.preventDefault();
         
         // Find CH in DOM
