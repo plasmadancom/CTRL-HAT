@@ -1,5 +1,7 @@
 # CTRL-HAT
-![CTRL HAT Animated](/img/ctrl-hat-animated.gif)
+<p align="center">
+    <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif">
+</p>
 
 A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays, typically used for industrial control applications.
 
@@ -11,7 +13,11 @@ This project is an evolution of previous I/O & relay interface boards we have cr
 * 16 Port* GPIO Expander
 
 ## Interactive Web GUI
-[![CTRL HAT Web GUI](/img/ctrl-hat-web-gui.gif)](http://ctrlhat.plasmadan.com/)
+<p align="center">
+    <a href="http://ctrlhat.plasmadan.com/" target="_blank" rel="nofollow">
+        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-web-gui.gif">
+    </a>
+</p>
 
 Once installed on your Raspberry Pi, this interactive GUI allows quick & easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide & quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
 
@@ -19,23 +25,20 @@ Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
 
 ## Built-in GPIO Expander
 
-Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have installed on your Pi!
-
-By default, these additional GPIOs operate at 5V (unlike Raspberry Pi GPIOs which are 3.3V). CTRL HAT can also be configured to operate at 3.3V if you prefer, by changing the solder jumper from 5V to 3.3V.
+Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I&sup2;C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have.
 
 ## Not Just Raspberry Pi
 
-We built CTRL HAT to work with any device which features an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
+We built CTRL HAT to work with any device featuring an I&sup2;C bus, the 2-wire connection makes it easy to connect to your preferred device. It can be used with either 3.3V devices (eg, Raspberry Pi) or 5V devices (eg, Arduino); by selecting the appropriate jumper (see [device compatibility](#device-compatibility)).
 
-## Stackable
-
-Multiple CTRL HATs can easily be stacked using standoffs. Since they work off the I2C bus, you can have up to 8 devices on a single Pi, and not just CTRL HATs, other I2C devices can work along-side CTRL HAT simply by configuring the I2C address.
+We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
 
 ## Known Compatible Solid State Relays
+<p align="center">
+    <img alt="Crydom SSR Mechanical Specifications" src="/img/crydom-ssr-mechanical-specifications.gif">
+</p>
 
-![Crydom SSR Mechanical Specifications](/img/crydom-ssr-mechanical-specifications.gif)
-
-Any solid state relay which physically fits onto CTRL HAT and is suited to a control voltage of 5VDC will work. CTRL HAT can also be configured to accept relays with other DC control voltages by using a dedicated power supply.
+Any solid state relay which physically fits onto CTRL HAT and is suited to a control voltage of 5VDC will work. CTRL HAT can also be configured to accept relays with other DC control voltages by using a dedicated power supply (see [isolating the relays](#isolating-the-relays)).
 
 ### Zero Cross Turn On (Resistive Loads)
 
@@ -59,12 +62,75 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 * [Crydom CMX200D3](https://uk.farnell.com/crydom/cmx200d3/ssr-sip-200vdc-3a-3-10vdc-in/dp/1936439) - 3A 0-200VDC
 * [Multicomp MCKSL60D20-L](https://uk.farnell.com/multicomp/mcksl60d20-l/solid-state-relay-3vdc-10vdc-th/dp/2770582) - 20A 0-60VDC - (see [maximum ratings](#maximum-ratings))
 
-## Maximum Ratings
+### Maximum Ratings
 
 * 10A @ 250V (ambient temperature)
 * 16A @ 250V (forced air cooling recommended, ~30° temperature rise)
 
 Exceeding these limits may overload the PCB.
+
+## Isolating the Relays
+<p align="center">
+    <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif">
+</p>
+
+Removing the LINK jumper from CTRL HAT disconnects 5V power from the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
+
+## Back-Powering
+
+Using a decent power supply, such as the official Raspberry Pi adaptor, you can expect to pull around 1.5A from the 5V pins on a Raspberry Pi. You can use up to 8 CTRL HATs with a single Raspberry Pi. That's up to 32 solid state relays, 32 LEDs and 8 GPIO expanders which all need power. It's easy to see how quickly we can go over the limit. Back-powering can solve this.
+
+The easiest way to back-power CTRL HAT is using the 5V power pins. However there are some other options.
+
+<p align="center">
+    <img alt="Back-Powering with Terminal" src="/img/back-powering-terminal.gif">
+</p>
+
+Use one of the 5.08mm pitch terminal blocks in-place of relay channel 3. You must also solder the back-pwr jumper on the underside of the board for this to work.
+
+<p align="center">
+    <img alt="Back-Powering Supplementary" src="/img/back-powering-supplementary.gif">
+</p>
+
+Alternatively, solder directly to the supplementary power-in pads as shown above, but DO NOT solder the back-pwr jumper!
+
+## I&sup2;C Addressing
+
+| Address | A2 | A1 | A0 |
+| :---: | :---: | :---: | :---: |
+| 0x20 | | | |
+| 0x21 | | | &#x2B1B; |
+| 0x22 | | &#x2B1B; | |
+| 0x23 | | &#x2B1B; | &#x2B1B; |
+| 0x24 | &#x2B1B; | | |
+| 0x25 | &#x2B1B; | | &#x2B1B; |
+| 0x26 | &#x2B1B; | &#x2B1B; | |
+| 0x27 | &#x2B1B; | &#x2B1B; | &#x2B1B; |
+
+## Device Compatibility
+
+CTRL HAT is fully compatible out of the box with most Raspberry Pi models and clones.
+
+| Device Model | Compatibility |
+| --- | :---: | --- |
+| Raspberry Pi Model A | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
+| Raspberry Pi Model B | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
+| Raspberry Pi 1 Model A+ | &#x2714;&#xFE0F; |
+| Raspberry Pi 1 Model B | &#x2714;&#xFE0F; |
+| Raspberry Pi 1 Model B+ | &#x2714;&#xFE0F; |
+| Raspberry Pi 2 Model B | &#x2714;&#xFE0F; |
+| Raspberry Pi 3 Model B & 3+ | &#x2714;&#xFE0F; |
+| Raspberry Pi 4 | &#x2714;&#xFE0F; |
+| Raspberry Pi Zero | &#x2714;&#xFE0F; |
+| Asus Tinker Board | &#x2714;&#xFE0F; |
+| Orange Pi | &#x2714;&#xFE0F; |
+| Odroid | &#x2714;&#xFE0F; |
+
+<p align="center">
+    <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif">
+</p>
+
+To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. This ensures stable communication over I&sup2;C.
 
 ## Known Compatible Cases
 
@@ -202,7 +268,7 @@ service vsftpd restart
 
 There are various configuration options in the config file :```/gui/config.php```
 
-You can customise the I2C address, GPIO setup, or disable any solid state relay channels you don't need.
+You can customise the I&sup2;C address, GPIO setup, or disable any solid state relay channels you don't need.
 
 ## License
 

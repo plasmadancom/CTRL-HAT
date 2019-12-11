@@ -66,21 +66,21 @@ body {
     height: 60px;
     background: url("../img/ctrl-hat-led-graphic.png");
     position: absolute;
-    top: 48px;
+    top: 130px;
     left: 100px;
     z-index: -1;
 }
 
 .leds .led1 {
-    top: 95px;
+    top: 230px;
 }
 
 .leds .led2 {
-    top: 142px;
+    top: 330px;
 }
 
 .leds .led3 {
-    top: 189px;
+    top: 430px;
 }
 
 .board-left, .board-right {
@@ -116,7 +116,7 @@ body {
 .board-left ul {
     list-style: none;
     position: absolute;
-    top: 239px;
+    top: 68px;
 }
 
 .board-left a {
@@ -165,7 +165,7 @@ body {
 .board-left .odd li {
     text-indent: 68px;
     position: relative;
-    left: -127px;
+    left: -115px;
 }
 
 .board-left .odd a {
@@ -179,11 +179,11 @@ body {
 .board-left .odd .num {
     text-align: right;
     left: auto;
-    right: 38px;
+    right: 50px;
 }
 
 .board-left .even {
-    left: 34px;
+    left: 46px;
     z-index: 10;
 }
 
@@ -258,11 +258,11 @@ body {
 
 .gpiobase {
     width: 48px;
-    height: 216px;
+    height: 384px;
     background: #2d3436;
     position: absolute;
-    top: 238px;
-    left: 8px;
+    top: 67px;
+    left: 20px;
 }
 
 .info {

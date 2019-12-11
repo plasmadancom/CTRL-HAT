@@ -110,6 +110,7 @@ $(document).ready(function() {
         var pin = parseInt(e.data('pin'));
         var gpio = parseInt(e.data('gpio'));
         var logic = parseInt(e.data('logic'));
+        var jumper = e.data('jumper');
         var mode = e.data('mode');
         var name = e.data('name');
         
@@ -127,11 +128,11 @@ $(document).ready(function() {
         if (0 <= gpio == gpio <= 3) $('.ssr' + gpio).addClass('selected');
         
         // Highlight selected pin
-        $('.board .pin' + pin).addClass('active');
+        $('.board .pin' + pin + ', .board .' + jumper).addClass('active');
         
-        // Hide guide for interrupt pins
+        // Hide guide for non-interactive pins
         var guide = $('.info .guide, .info .int-hide');
-        gpio < 0 ? guide.hide() : guide.show();
+        pin < 15 || pin > 30 ? guide.hide() : guide.show();
         
         switch (mode) {
             case 'out':
