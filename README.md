@@ -112,7 +112,7 @@ Alternatively, solder directly to the supplementary power-in pads as shown above
 CTRL HAT is fully compatible out of the box with most Raspberry Pi models and clones.
 
 | Device Model | Compatibility |
-| --- | :---: | --- |
+| --- | :---: |
 | Raspberry Pi Model A | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
 | Raspberry Pi Model B | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
 | Raspberry Pi 1 Model A+ | &#x2714;&#xFE0F; |
