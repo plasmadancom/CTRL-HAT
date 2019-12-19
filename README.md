@@ -5,7 +5,7 @@
 
 A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays, typically used for industrial control applications.
 
-This project is an evolution of previous I/O & relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, medical devices, elevators, door-opening mechanisms, etc.
+This project is an evolution of previous I/O &amp; relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, elevators, door-opening mechanisms, etc.
 
 ## Features
 
@@ -19,7 +19,7 @@ This project is an evolution of previous I/O & relay interface boards we have cr
     </a>
 </p>
 
-Once installed on your Raspberry Pi, this interactive GUI allows quick & easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide & quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
+Once installed on your Raspberry Pi, this interactive GUI allows quick &amp; easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
 
 Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
 
@@ -71,10 +71,10 @@ Exceeding these limits may overload the PCB.
 
 ## Isolating the Relays
 <p align="center">
-    <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif">
+    <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif" width="50%">
 </p>
 
-Removing the LINK jumper from CTRL HAT disconnects 5V power from the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
+Removing the LINK jumper from CTRL HAT disconnects 5V power to the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
 
 ## Back-Powering
 
@@ -86,13 +86,13 @@ The easiest way to back-power CTRL HAT is using the 5V power pins. However there
     <img alt="Back-Powering with Terminal" src="/img/back-powering-terminal.gif">
 </p>
 
-Use one of the 5.08mm pitch terminal blocks in-place of relay channel 3. You must also solder the back-pwr jumper on the underside of the board for this to work.
+Use one of the 5.08mm pitch terminal blocks in-place of relay channel 3. You must also solder the BACK-PWR jumper on the underside of the board for this to work.
 
 <p align="center">
     <img alt="Back-Powering Supplementary" src="/img/back-powering-supplementary.gif">
 </p>
 
-Alternatively, solder directly to the supplementary power-in pads as shown above, but DO NOT solder the back-pwr jumper!
+Alternatively, solder directly to the supplementary power-in pads as shown above, but DO NOT solder the BACK-PWR jumper!
 
 ## I&sup2;C Addressing
 
@@ -112,14 +112,14 @@ Alternatively, solder directly to the supplementary power-in pads as shown above
 CTRL HAT is fully compatible out of the box with most Raspberry Pi models and clones.
 
 | Device Model | Compatibility |
-| --- | :---: | --- |
+| --- | :---: |
 | Raspberry Pi Model A | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
 | Raspberry Pi Model B | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
 | Raspberry Pi 1 Model A+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 1 Model B | &#x2714;&#xFE0F; |
 | Raspberry Pi 1 Model B+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 2 Model B | &#x2714;&#xFE0F; |
-| Raspberry Pi 3 Model B & 3+ | &#x2714;&#xFE0F; |
+| Raspberry Pi 3 Model B &amp; 3+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 4 | &#x2714;&#xFE0F; |
 | Raspberry Pi Zero | &#x2714;&#xFE0F; |
 | Asus Tinker Board | &#x2714;&#xFE0F; |
@@ -127,10 +127,16 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 | Odroid | &#x2714;&#xFE0F; |
 
 <p align="center">
-    <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif">
+    <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif" width="50%">
 </p>
 
-To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. This ensures stable communication over I&sup2;C.
+To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I&sup2;C communication.
+
+## Mechanical
+
+<p align="center">
+    <img alt="Mechanical Drawing" src="/img/mechanical.gif" width="50%">
+</p>
 
 ## Known Compatible Cases
 
