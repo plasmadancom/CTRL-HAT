@@ -3,14 +3,42 @@
     <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif">
 </p>
 
-A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays, typically used for industrial control applications.
+A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays (SSRs).
 
-This project is an evolution of previous I/O &amp; relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. The high EMC and high inrush current capability of these widely available solid state relays make them ideal for home automation, industrial control applications such as lighting, motor control, ATM, elevators, door-opening mechanisms, etc.
+This project is an evolution of previous I/O &amp; relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. CTRL HAT is ideally suited to automation or industrial control applications requiring high-speed switching, or switching of loads not suitable for regular mechanical relays, such as motors, power supplies, or noise sensitive equipment such as amplifiers.
 
 ## Features
 
-* 4x Solid State Relay Control
-* 16 Port* GPIO Expander
+* Support 4 Industry Standard SIP type Solid State Relays per CTRL HAT
+* Easy to use [interactive web GUI](#interactive-web-gui)
+* Stackable. Up-to eight CTRL HATs can be used with a single Raspberry Pi
+* 16-port [GPIO expander](#built-in-gpio-expander)
+* 5V / 3.3V GPIO voltage selection via [jumper](#device-compatibility)
+* Supports range of [SSR control voltages](#isolating-the-relays)
+* Can be used with any MCP23017 compatible host device
+* Built-in user programmable ID EEPROM
+* Support for multiple connector types
+* Conforms to Raspberry Pi HAT Specifications
+* Enormous range of applications
+
+## Why Solid State Relays?
+
+* Low Power – Up-to 32 SSRs using 8 CTRL HATs on a single Raspberry Pi, with a single power supply!
+* Low Noise – SSRs generate minimal electrical noise compared to mechanical relays
+* High Speed – SSRs typically switch around 100 times faster than mechanical relays with no contact bounce
+* Reliability – High resistance to shock & vibration makes SSRs suitable for use in demanding environments
+* Opto-Isolated – Typical opto-osolation of > 4000VAC
+* Zero Sparks – SSRs do not generate electrical arcs or sparks like mechanical relays
+* Zero Noise – No moving parts means completely silent switching operation
+* Life Expectancy – Increased operational cycles compared to mechanical relays
+
+## Typical Applications
+
+* High speed and frequent switching operations
+* Applications in high vibration environments
+* Applications near sensitive electronic components
+* Dusty or humid environments
+* Hazardous locations
 
 ## Interactive Web GUI
 <p align="center">
@@ -78,7 +106,7 @@ Removing the LINK jumper from CTRL HAT disconnects 5V power to the solid state r
 
 ## Back-Powering
 
-Using a decent power supply, such as the official Raspberry Pi adaptor, you can expect to pull around 1.5A from the 5V pins on a Raspberry Pi. You can use up to 8 CTRL HATs with a single Raspberry Pi. That's up to 32 solid state relays, 32 LEDs and 8 GPIO expanders which all need power. It's easy to see how quickly we can go over the limit. Back-powering can solve this.
+Using a decent power supply, such as the official Raspberry Pi adaptor, you can expect to pull around 1.5A from the 5V pins on a Raspberry Pi. You can use up to 8 CTRL HATs with a single Raspberry Pi. That's up to 32 solid state relays, 32 LEDs and 8 GPIO expanders which all need power. It's easy to see how quickly we can go over the limit, especially if the GPIO expanders are used to drive other devices. Back-powering can solve this.
 
 The easiest way to back-power CTRL HAT is using the 5V power pins. However there are some other options.
 
