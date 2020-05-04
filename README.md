@@ -9,9 +9,9 @@ This project is an evolution of previous I/O &amp; relay interface boards we hav
 
 ## Features
 
-* Support 4 Industry Standard SIP type Solid State Relays per CTRL HAT
+* Support 4 Industry Standard SIP type Solid State Relays
 * Easy to use [interactive web GUI](#interactive-web-gui)
-* Stackable. Up-to eight CTRL HATs can be used with a single Raspberry Pi
+* Stackable. Use up-to eight CTRL HATs with a single Pi
 * 16-port [GPIO expander](#built-in-gpio-expander)
 * 5V / 3.3V GPIO voltage selection via [jumper](#device-compatibility)
 * Supports range of [SSR control voltages](#isolating-the-relays)
@@ -181,41 +181,63 @@ https://www.raspberrypi.org/downloads/raspbian/
 
 I recommend a clean Raspian install before proceeding.
 
-```
-sudo bash
-```
+Tip: For headless setup, SSH can be enabled by placing a file named 'ssh' (no extension) onto the boot partition of the SD card.
 
-Update Raspian
+## Enable I&sup2;C
 
-```
-apt-get update
-apt-get upgrade
-```
-
-## Install Apache components
+I&sup2;C must be enabled in raspi-config to allow CTRL HAT to communcate with Raspberry Pi.
 
 ```
-apt-get install apache2 php5 libapache2-mod-php5
+sudo raspi-config
+```
+
+Select 5 Interfacing Options, then P5 I2C. A prompt will appear asking Would you like the I2C interface to be enabled?, select Yes, exit the utility and reboot your raspberry pi.
+
+```
+sudo reboot
+```
+
+Install I&sup2;C-Tools
+
+```
+sudo apt install i2c-tools -y
+```
+
+Next you need to update your Raspberry Pi to ensure all the latest packages are installed.
+
+```
+sudo apt update
+sudo apt upgrade
+```
+
+For recent versions of the Raspberry Pi (3.18 kernel or later) you will need to add `dtparam=i2c1=on` to the end of `/boot/config.txt`.
+
+```
+sudo sh -c "echo 'dtparam=i2c1=on' >> /boot/config.txt"
+```
+
+You can increase the I&sup2;C bus speed by adding the paramter to the end of `/boot/config.txt`. CTRL HAT supports up to 1 MHz (1000000) bus speeds.
+
+```
+sudo sh -c "echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt"
+```
+
+Add the 'pi' user to the I2C group to avoid having to run the I2C tools as root.
+
+```
+sudo adduser pi i2c
+```
+
+Reboot your Pi.
+
+```
+sudo reboot
 ```
 
 ## Install WiringPi
 
 ```
-apt-get install git-core -y
-```
-
-Get repo
-
-```
-git clone git://git.drogon.net/wiringPi
-```
-
-Build WiringPi
-
-```
-cd wiringPi
-git pull origin
-./build
+sudo apt install wiringpi -y
 ```
 
 Before proceeding, check WiringPi is working correctly.
@@ -225,13 +247,35 @@ gpio -v
 gpio readall
 ```
 
-## Install SVN
+Now test if CTRL HAT is detectable.
 
 ```
-apt-get install subversion
+sudo i2cdetect -y 1
 ```
 
-## Clone Repo Contents
+You should see a list of all I&sup2;C devices and their addresses.
+
+## Install Apache & PHP
+
+```
+sudo apt install apache2 php libapache2-mod-php -y
+```
+
+Test the webserver is working. Navigate to http://localhost/ on the Pi itself, or http://192.168.1.10 (whatever the Pi's IP address is) from another computer on the network. Use the snippet below to get the Pi's IP address in command line.
+
+```
+hostname -I
+```
+
+## Install CTRL HAT Web GUI
+
+You need to clone the web GUI files from the 'gui' subfolder on GitHub, to do that we need to install subversion.
+
+```
+sudo apt install subversion -y
+```
+
+Navigate to the web root.
 
 ```
 cd /var/www/html
@@ -240,44 +284,39 @@ cd /var/www/html
 Empty default Apache files
 
 ```
-rm -rf *
+sudo rm -rf *
 ```
 
-Clone repo
+Clone web GUI files (you must include the period at the end).
 
 ```
-svn checkout https://github.com/plasmadancom/CTRL-HAT/trunk/gui .
+sudo svn checkout https://github.com/plasmadancom/CTRL-HAT/trunk/gui .
 ```
 
 Be sure to set file permissions to 755 in the web directory.
 
 ```
-chmod -R 755 /var/www
+sudo chmod -R 755 /var/www
 ```
 
-Apache requires sudo permission to use WiringPi.
-Note: If your Raspberry Pi is on a shared network you may want to find a more secure method than this.
+That's it! reload the web page to see the CTRL HAT web GUI. Select any of the relays or pins to toggle them on/off.
+
+## Optional: Install vsftpd for Easier File Editing
 
 ```
-echo "www-data ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo apt-get install vsftpd -y
 ```
 
-## Optional: install vsftpd for easier file editing
+Change user for vsftpd.
 
 ```
-apt-get install vsftpd -y
+sudo chown -R pi /var/www
 ```
 
-Change user for vsftpd
+Edit vsftpd.conf.
 
 ```
-chown -R pi /var/www
-```
-
-Edit vsftpd.conf
-
-```
-nano /etc/vsftpd.conf
+sudo nano /etc/vsftpd.conf
 ```
 
 Uncomment the following line:
@@ -292,17 +331,23 @@ Add the following line:
 force_dot_files=YES
 ```
 
-Restart vsftpd
+Save and exit nano, then restart vsftpd.
 
 ```
-service vsftpd restart
+sudo service vsftpd restart
 ```
+
+You should now be able to login via FTP.
 
 ## Config
 
-There are various configuration options in the config file :```/gui/config.php```
+There are various configuration options in the config file: ```/config.php```
 
 You can customise the I&sup2;C address, GPIO setup, or disable any solid state relay channels you don't need.
+
+```
+sudo nano var/www/html/config.php
+```
 
 ## License
 
