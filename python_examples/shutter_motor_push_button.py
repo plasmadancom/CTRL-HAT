@@ -80,12 +80,8 @@ def hold():
                 break                                        # Interrupt timer
 
 def start(updn=0):
-    off = relay_up
-    on = relay_dn
-    
-    if updn:
-        off = relay_dn
-        on = relay_up
+    off = relay_dn if updn else relay_up
+    on = relay_up if updn else relay_dn
     
     wiringpi.digitalWrite(off, 0)                            # Stop relay if active
     sleep(motor_change_delay)                                # Wait for relay
