@@ -243,7 +243,7 @@ sudo i2cdetect -y 1
 You should see a grid of all populated I&sup2;C devices.
 
 <p align="center">
-    <img alt="I2cdetect output" src="/img/i2cdetect.gif" width="50%">
+    <img alt="I2cdetect output" src="/img/i2cdetect.gif">
 </p>
 
 ## Install WiringPi
