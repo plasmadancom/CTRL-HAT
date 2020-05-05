@@ -240,7 +240,7 @@ Now test if CTRL HAT is detectable.
 sudo i2cdetect -y 1
 ```
 
-You should see a grid of all poulated I&sup2;C devices.
+You should see a grid of all populated I&sup2;C devices.
 
 <p align="center">
     <img alt="I2cdetect output" src="/img/i2cdetect.gif" width="50%">
@@ -257,6 +257,18 @@ Before proceeding, check WiringPi is working correctly.
 ```
 gpio -v
 gpio readall
+```
+
+If you wish to write your own scripts using Python, you will need to install WiringPi for Python also.
+
+```
+sudo apt install python-pip -y
+```
+
+Install WiringPi Python.
+
+```
+sudo pip install wiringpi
 ```
 
 ## Install Apache & PHP
@@ -342,6 +354,12 @@ sudo service vsftpd restart
 ```
 
 You should now be able to login via FTP.
+
+## Where to Go From Here
+
+Integrating CTRL HAT with your own projects is easy, just follow any guide which uses the MCP23017 expander. We have written some example Python scripts to get you started (see [here](https://github.com/plasmadancom/CTRL-HAT/tree/master/python_examples)).
+
+You will need to install [WiringPi for Python](#install-wiringpi) to use them.
 
 ## Config
 
