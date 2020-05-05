@@ -191,7 +191,7 @@ I&sup2;C must be enabled in raspi-config to allow CTRL HAT to communcate with Ra
 sudo raspi-config
 ```
 
-Select 5 Interfacing Options, then P5 I2C. A prompt will appear asking Would you like the I2C interface to be enabled?, select Yes, exit the utility and reboot your raspberry pi.
+Select 5 Interfacing Options, then P5 I2C. A prompt will appear asking Would you like the I2C interface to be enabled?, select Yes, exit the utility and reboot your Raspberry Pi.
 
 ```
 sudo reboot
@@ -228,11 +228,23 @@ Add the 'pi' user to the I2C group to avoid having to run the I2C tools as root.
 sudo adduser pi i2c
 ```
 
-Reboot your Pi.
+Reboot your Raspberry Pi.
 
 ```
 sudo reboot
 ```
+
+Now test if CTRL HAT is detectable.
+
+```
+sudo i2cdetect -y 1
+```
+
+You should see a grid of all poulated I&sup2;C devices.
+
+<p align="center">
+    <img alt="I2cdetect output" src="/img/i2cdetect.gif" width="50%">
+</p>
 
 ## Install WiringPi
 
@@ -246,14 +258,6 @@ Before proceeding, check WiringPi is working correctly.
 gpio -v
 gpio readall
 ```
-
-Now test if CTRL HAT is detectable.
-
-```
-sudo i2cdetect -y 1
-```
-
-You should see a list of all I&sup2;C devices and their addresses.
 
 ## Install Apache & PHP
 
@@ -304,7 +308,7 @@ That's it! reload the web page to see the CTRL HAT web GUI. Select any of the re
 ## Optional: Install vsftpd for Easier File Editing
 
 ```
-sudo apt-get install vsftpd -y
+sudo apt install vsftpd -y
 ```
 
 Change user for vsftpd.
@@ -346,7 +350,7 @@ There are various configuration options in the config file: ```/config.php```
 You can customise the I&sup2;C address, GPIO setup, or disable any solid state relay channels you don't need.
 
 ```
-sudo nano var/www/html/config.php
+sudo nano /var/www/html/config.php
 ```
 
 ## License
