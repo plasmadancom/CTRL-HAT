@@ -53,10 +53,12 @@ Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
 
 ## Easy Installer
 
-The easiest way to setup your CTRL HAT is using our installer.
+This bash script will automatically enable I2C, install the required packages and setup the Web GUI.
+**Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.**
 
-This bash script will automatically add the required config settings, install the required packages and setup the Web GUI.
-*Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.*
+<p align="center">
+    <img alt="CTRL HAT Installer" src="/img/ctrlhat-install.gif">
+</p>
 
 ```
 sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/ctrlhat-install.sh

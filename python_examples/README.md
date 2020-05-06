@@ -23,7 +23,7 @@ sudo python shutter_motor.py
 
 ## shutter_motor_push_button.py
 
-Automatic motor control with single button. Allows use of wired shutter / roller blind motors without the need for a up / down switch, ideal for retrofit installations.
+Automatic motor control with single button. Allows use of wired shutter / roller blind motors without the need for an up / down switch, ideal for retrofit installations.
 
 ```
 sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/python_examples/shutter_motor_push_button.py
