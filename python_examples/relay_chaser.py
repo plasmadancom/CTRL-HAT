@@ -28,10 +28,11 @@ i2c_addr = 0x20
 
 relays = [100, 101, 102, 103]                                # Relay WiringPi ports
 
-# Config
+# Timing
 hold_on = 0.05                                               # Time to hold relays on (seconds)
 hold_off = 0.05                                              # Delay between each relay on (seconds)
 
+rlen = len(relays)
 
 # Initialise WiringPi
 wiringpi.wiringPiSetup()
@@ -43,14 +44,12 @@ for i in relays:
 
 print 'Relay Chaser Loaded!'
 
-rlen = len(relays)
-
 try:
     while True:                                              # Loop forever
-        for r in relays + list(reversed(relays))[1:rlen-1]:  # Loop relay list then reverse (skipping repeats)
-            wiringpi.digitalWrite(r, 1)                      # Relay on
+        for i in relays + list(reversed(relays))[1:rlen-1]:  # Loop relay list then reverse (skipping repeats)
+            wiringpi.digitalWrite(i, 1)                      # Relay on
             sleep(hold_on)
-            wiringpi.digitalWrite(r, 0)                      # Relay off
+            wiringpi.digitalWrite(i, 0)                      # Relay off
             sleep(hold_off)
 
 except Exception as e:                                       # Something went wrong

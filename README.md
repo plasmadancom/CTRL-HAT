@@ -51,13 +51,27 @@ Once installed on your Raspberry Pi, this interactive GUI allows quick &amp; eas
 
 Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
 
+## Easy Installer
+
+The easiest way to setup your CTRL HAT is using our installer.
+
+This bash script will automatically add the required config settings, install the required packages and setup the Web GUI.
+*Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.*
+
+```
+sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/ctrlhat-install.sh
+sudo bash ctrlhat-install.sh
+```
+
+Alternatively, you can [install manually](#installation).
+
 ## Built-in GPIO Expander
 
-Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I&sup2;C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have.
+Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have.
 
 ## Not Just Raspberry Pi
 
-We built CTRL HAT to work with any device featuring an I&sup2;C bus, the 2-wire connection makes it easy to connect to your preferred device. It can be used with either 3.3V devices (eg, Raspberry Pi) or 5V devices (eg, Arduino); by selecting the appropriate jumper (see [device compatibility](#device-compatibility)).
+We built CTRL HAT to work with any device featuring an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. It can be used with either 3.3V devices (eg, Raspberry Pi) or 5V devices (eg, Arduino); by selecting the appropriate jumper (see [device compatibility](#device-compatibility)).
 
 We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
 
@@ -122,7 +136,7 @@ Use one of the 5.08mm pitch terminal blocks in-place of relay channel 3. You mus
 
 Alternatively, solder directly to the supplementary power-in pads as shown above, but DO NOT solder the BACK-PWR jumper!
 
-## I&sup2;C Addressing
+## I2C Addressing
 
 | Address | A2 | A1 | A0 |
 | :---: | :---: | :---: | :---: |
@@ -158,7 +172,7 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
     <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif" width="50%">
 </p>
 
-To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I&sup2;C communication.
+To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I2C communication.
 
 ## Mechanical
 
@@ -172,7 +186,7 @@ To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. U
 
 There are countless cases compatible with CTRL HAT, limited only by the height of the solid state relays used.
 
-# Web GUI Installation
+# Installation
 
 ## Prerequisites
 
@@ -183,9 +197,9 @@ I recommend a clean Raspian install before proceeding.
 
 Tip: For headless setup, SSH can be enabled by placing a file named 'ssh' (no extension) onto the boot partition of the SD card.
 
-## Enable I&sup2;C
+## Enable I2C
 
-I&sup2;C must be enabled in raspi-config to allow CTRL HAT to communcate with Raspberry Pi.
+I2C must be enabled in raspi-config to allow CTRL HAT to communcate with Raspberry Pi.
 
 ```
 sudo raspi-config
@@ -197,17 +211,23 @@ Select 5 Interfacing Options, then P5 I2C. A prompt will appear asking Would you
 sudo reboot
 ```
 
-Install I&sup2;C-Tools
+Update your Raspberry Pi to ensure all the latest packages are installed.
+
+```
+sudo apt update
+sudo apt upgrade
+```
+
+Install I2C-Tools
 
 ```
 sudo apt install i2c-tools -y
 ```
 
-Next you need to update your Raspberry Pi to ensure all the latest packages are installed.
+Enable i2c_vc so your Raspberry Pi can detect and read the EEPROM.
 
 ```
-sudo apt update
-sudo apt upgrade
+sudo sh -c "echo 'dtparam=i2c_vc=on' >> /boot/config.txt"
 ```
 
 For recent versions of the Raspberry Pi (3.18 kernel or later) you will need to add `dtparam=i2c1=on` to the end of `/boot/config.txt`.
@@ -216,7 +236,7 @@ For recent versions of the Raspberry Pi (3.18 kernel or later) you will need to 
 sudo sh -c "echo 'dtparam=i2c1=on' >> /boot/config.txt"
 ```
 
-You can increase the I&sup2;C bus speed by adding the paramter to the end of `/boot/config.txt`. CTRL HAT supports up to 1 MHz (1000000) bus speeds.
+You can increase the I2C bus speed by adding the i2c_baudrate paramter to `/boot/config.txt`. CTRL HAT supports up to 1.7 MHz (1700000) I2C bus speeds, although we recommend starting with 400kHz (Fast Mode) for reliable operation with Raspberry Pi.
 
 ```
 sudo sh -c "echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt"
@@ -240,7 +260,7 @@ Now test if CTRL HAT is detectable.
 sudo i2cdetect -y 1
 ```
 
-You should see a grid of all populated I&sup2;C devices.
+You should see a grid of all populated I2C devices.
 
 <p align="center">
     <img alt="I2cdetect output" src="/img/i2cdetect.gif">
@@ -265,7 +285,7 @@ If you wish to write your own scripts using Python, you will need to install Wir
 sudo apt install python-pip -y
 ```
 
-Install WiringPi Python.
+Install WiringPi for Python.
 
 ```
 sudo pip install wiringpi
@@ -365,7 +385,7 @@ You will need to install [WiringPi for Python](#install-wiringpi) to use them.
 
 There are various configuration options in the config file: ```/config.php```
 
-You can customise the I&sup2;C address, GPIO setup, or disable any solid state relay channels you don't need.
+You can customise the I2C address, GPIO setup, or disable any solid state relay channels you don't need.
 
 ```
 sudo nano /var/www/html/config.php

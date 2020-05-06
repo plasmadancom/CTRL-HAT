@@ -9,19 +9,27 @@ INPUT="Please answer yes or no."
 update_file() {
 	if grep -Fq $1 $4
 		then
-			echo "$3 found in $4, updating ..."
+			echo "Update $3 found in $4 ..."
 			sed -i "/$1/c\\$2" $4
 	
 	else
-		echo "Added $3 in $4 ..."
+		echo "Add $3 in $4 ..."
 		echo "$2" >> $4
 	fi
 }
+
+echo "Enable I2C interface ..."
+sudo raspi-config nonint do_i2c 0
 
 update_file "dtparam=i2c_arm" "dtparam=i2c_arm=on" "I2C interface setting" $CONFIG
 update_file "dtparam=i2c_vc" "dtparam=i2c_vc=on" "I2C bus 0" $CONFIG
 update_file "dtparam=i2c1" "dtparam=i2c1=on" "I2C bus 1" $CONFIG
 update_file "dtparam=i2c_baudrate" "dtparam=i2c_baudrate=400000" "I2C bus baudrate setting" $CONFIG
+
+
+echo "Update package lists and upgrade ..."
+sudo apt update -y
+sudo apt upgrade -y
 
 
 echo "Install CTRL HAT required packages ..."
@@ -63,7 +71,7 @@ while true; do
     read -p "Install WiringPi for Python?" yn
     case $yn in
         [Yy]* )
-			apt-get install python-pip
+			apt-get install python-pip -y
 			pip install wiringpi
 			break
 			;;
