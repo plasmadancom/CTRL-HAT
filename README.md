@@ -11,15 +11,12 @@ This project is an evolution of previous I/O &amp; relay interface boards we hav
 
 * Support 4 Industry Standard SIP type Solid State Relays
 * Easy to use [interactive web GUI](#interactive-web-gui)
-* Stackable. Use up-to eight CTRL HATs with a single Pi
 * 16-port [GPIO expander](#built-in-gpio-expander)
 * 5V / 3.3V GPIO voltage selection via [jumper](#device-compatibility)
 * Supports range of [SSR control voltages](#isolating-the-relays)
-* Can be used with any MCP23017 compatible host device
+* Can be used with any I2C host device
 * Built-in user programmable ID EEPROM
-* Support for multiple connector types
-* Conforms to Raspberry Pi HAT Specifications
-* Enormous range of applications
+* Conforms to Raspberry Pi [HAT Specifications](https://github.com/raspberrypi/hats)
 
 ## Why Solid State Relays?
 
@@ -42,19 +39,19 @@ This project is an evolution of previous I/O &amp; relay interface boards we hav
 
 ## Interactive Web GUI
 <p align="center">
-    <a href="http://ctrlhat.plasmadan.com/" target="_blank" rel="nofollow">
+    <a href="https://ctrlhat.plasmadan.com" target="_blank" rel="nofollow">
         <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-web-gui.gif">
     </a>
 </p>
 
 Once installed on your Raspberry Pi, this interactive GUI allows quick &amp; easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
 
-Check-out the [Live Demo.](http://ctrlhat.plasmadan.com/)
+Check-out the [Live Demo.](https://ctrlhat.plasmadan.com)
 
 ## Easy Installer
 
 <p align="center">
-    <img alt="CTRL HAT Installer" src="/img/ctrlhat-install.gif" width="75%">
+    <img alt="CTRL HAT Installer" src="/img/ctrlhat-install.gif">
 </p>
 
 This bash script will automatically enable I2C, install the required packages and setup the Web GUI.<br/>**Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.**
@@ -64,17 +61,19 @@ sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/ctrlhat-install.sh
 sudo bash ctrlhat-install.sh
 ```
 
-Alternatively, you can [install manually](#installation).
+Alternatively, you can install manually. See our [setup guide](#setup-guide).
 
 ## Built-in GPIO Expander
 
-Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for each CTRL HAT you have.
+Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for use with your project.
 
-## Not Just Raspberry Pi
+## Arduino Wiring
 
-We built CTRL HAT to work with any device featuring an I2C bus, the 2-wire connection makes it easy to connect to your preferred device. It can be used with either 3.3V devices (eg, Raspberry Pi) or 5V devices (eg, Arduino); by selecting the appropriate jumper (see [device compatibility](#device-compatibility)).
+<p align="center">
+    <img alt="CTRL HAT Arduino" src="/img/ctrl-hat-arduino.gif">
+</p>
 
-We believe the Raspberry Pi HAT specification is the perfect footprint. Compact yet familiar, with 4x mounting holes, the option to stack with other Raspberry Pi HATs / pHATs and of course a wide range of compatible cases to choose from.
+We built CTRL HAT to work with any device featuring an I2C bus. It can be used with either 3.3V devices (eg, Raspberry Pi) or 5V devices (eg, Arduino); by selecting the appropriate jumper (see [device compatibility](#device-compatibility)).
 
 ## Known Compatible Solid State Relays
 <p align="center">
@@ -108,9 +107,13 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 ### Maximum Ratings
 
 * 10A @ 250V (ambient temperature)
-* 16A @ 250V (forced air cooling recommended, ~30° temperature rise)
+* 16A @ 250V (forced air cooling required, ~30° temperature rise)
 
 Exceeding these limits may overload the PCB.
+
+## Electrical Safety
+
+Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly. If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrican.
 
 ## Isolating the Relays
 <p align="center">
@@ -187,7 +190,7 @@ To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. U
 
 There are countless cases compatible with CTRL HAT, limited only by the height of the solid state relays used.
 
-# Installation
+# Setup Guide
 
 ## Prerequisites
 

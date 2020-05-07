@@ -30,7 +30,7 @@ from time import sleep
 pin_base = 100
 i2c_addr = 0x20
 
-button = 108                                                 # Motor control input WiringPi port
+button = 108                                                 # Up / Down button WiringPi port
 relay_up = 100                                               # Motor up WiringPi port
 relay_dn = 101                                               # Motor down WiringPi port
 

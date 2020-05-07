@@ -19,7 +19,7 @@ update_file() {
 }
 
 echo "Enable I2C interface ..."
-sudo raspi-config nonint do_i2c 0
+raspi-config nonint do_i2c 0
 
 update_file "dtparam=i2c_arm" "dtparam=i2c_arm=on" "I2C interface setting" $CONFIG
 update_file "dtparam=i2c_vc" "dtparam=i2c_vc=on" "I2C bus 0" $CONFIG
@@ -28,8 +28,8 @@ update_file "dtparam=i2c_baudrate" "dtparam=i2c_baudrate=400000" "I2C bus baudra
 
 
 echo "Update package lists and upgrade ..."
-sudo apt update -y
-sudo apt upgrade -y
+apt-get update -y
+apt-get upgrade -y
 
 
 echo "Install CTRL HAT required packages ..."
