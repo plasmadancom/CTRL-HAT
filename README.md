@@ -111,7 +111,7 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 
 Exceeding these limits may overload the PCB.
 
-## Electrical Safety
+### Electrical Safety
 
 Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly. If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrican.
 
