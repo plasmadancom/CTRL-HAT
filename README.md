@@ -1,11 +1,18 @@
-# CTRL-HAT
+# CTRL HAT
+
+* [Web GUI Live Demo](https://ctrlhat.plasmadan.com)
+* [Easy Installer](#easy-installer)
+* [Arduino Wiring](#arduino-wiring)
+* [Known Compatible Relays](#known-compatible-solid-state-relays)
+* [Setup Guide](#setup-guide)
+
 <p align="center">
     <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif">
 </p>
 
 A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays (SSRs).
 
-This project is an evolution of previous I/O &amp; relay interface boards we have created primarily for home automation purposes. We saw a need for a low cost high current capacity solid state relay control board for switching inductive loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. CTRL HAT is ideally suited to automation or industrial control applications requiring high-speed switching, or switching of loads not suitable for regular mechanical relays, such as motors, power supplies, or noise sensitive equipment such as amplifiers.
+Designed for switching high current loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. CTRL HAT is ideally suited to automation or industrial control applications requiring high-speed switching, or switching of loads not suitable for regular mechanical relays, such as motors, power supplies, or noise sensitive equipment such as amplifiers.
 
 ## Features
 
@@ -50,16 +57,18 @@ Check-out the [Live Demo.](https://ctrlhat.plasmadan.com)
 
 ## Easy Installer
 
+Our easy installer takes care of the setup process automatically.
+
 <p align="center">
     <img alt="CTRL HAT Installer" src="/img/ctrlhat-install.gif">
 </p>
-
-This bash script will automatically enable I2C, install the required packages and setup the Web GUI.<br/>**Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.**
 
 ```
 sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/ctrlhat-install.sh
 sudo bash ctrlhat-install.sh
 ```
+
+This bash script will automatically enable I2C, install the required packages and setup the Web GUI.<br/>**Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.**
 
 Alternatively, you can install manually. See our [setup guide](#setup-guide).
 
