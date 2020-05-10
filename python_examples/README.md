@@ -1,6 +1,6 @@
 # Python Examples
 
-We have written some example Python scripts to get you started. You will need to install [WiringPi for Python](https://github.com/plasmadancom/CTRL-HAT#install-wiringpi) to use them.
+We have provided some example Python scripts to get you started. You will need to install [WiringPi for Python](https://github.com/plasmadancom/CTRL-HAT#install-wiringpi) to use them.
 
 
 ## relay_chaser.py
