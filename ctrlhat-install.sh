@@ -99,10 +99,7 @@ fi
 
 
 chmod -R 755 /var/www
-echo "CTRL HAT Web GUI Installed."
 hostname -I
-
-
-echo "Install Complete. Please reboot."
+echo "CTRL HAT Web GUI Installed. Please reboot."
 
 exit 0
