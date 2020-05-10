@@ -10,18 +10,19 @@
     <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif">
 </p>
 
-A Raspberry Pi HAT I/O board specifically designed for use with Crydom style SIP PCB mounted solid state relays (SSRs).
+A Raspberry Pi HAT I/O board for use with solid state power relays (SSRs). Designed for switching high power loads (up to 16A) without the need for costly extra hardware such as SSR modules or contactors.
 
-Designed for switching high current loads such as motorised blinds, without the need for costly extra hardware such as SSR modules or contactors. CTRL HAT is ideally suited to automation or industrial control applications requiring high-speed switching, or switching of loads not suitable for regular mechanical relays, such as motors, power supplies, or noise sensitive equipment such as amplifiers.
+CTRL HAT is ideally suited to automation or industrial control applications requiring high-speed switching, or switching of loads not suitable for regular mechanical relays, such as motors, power supplies, or noise sensitive equipment such as amplifiers.
 
 ## Features
 
-* Support 4 Industry Standard SIP type Solid State Relays
+* Support 4 industry standard SIP-4 type solid state relays
 * Easy to use [interactive web GUI](#interactive-web-gui)
-* 16-port [GPIO expander](#built-in-gpio-expander)
-* 5V / 3.3V GPIO voltage selection via [jumper](#device-compatibility)
-* Supports range of [SSR control voltages](#isolating-the-relays)
-* Can be used with any I2C host device
+* Based on the MCP23017 16-port [GPIO expander](#built-in-gpio-expander)
+* Jumper selectable [I2C address](#i2c-addressing) & [GPIO voltage](#device-compatibility) (3.3V / 5V)
+* Huge range of compatible solid state relays ([known list](#known-compatible-solid-state-relays))
+* 10A @ 250V / 16A @ 250V (forced air cooled)
+* Can be used with 3.3V or 5V I2C host devices (eg, [Arduino](#arduino-wiring))
 * Built-in user programmable ID EEPROM
 * Conforms to Raspberry Pi [HAT Specifications](https://github.com/raspberrypi/hats)
 
@@ -64,11 +65,11 @@ Our easy installer takes care of the setup process automatically.
 </p>
 
 ```
-sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/ctrlhat-install.sh
-sudo bash ctrlhat-install.sh
+sudo wget https://git.plasmadan.com/ctrlhat-install.sh
+sudo sh ctrlhat-install.sh
 ```
 
-This bash script will automatically enable I2C, install the required packages and setup the Web GUI.<br/>**Note: The installer will delete all files in `/var/www/html` in order to install the web GUI.**
+This script will automatically enable I2C, install the required packages and setup the Web GUI.
 
 Alternatively, you can install manually. See our [setup guide](#setup-guide).
 
@@ -91,7 +92,7 @@ We built CTRL HAT to work with any device featuring an I2C bus. It can be used w
 
 Any solid state relay which physically fits onto CTRL HAT and is suited to a control voltage of 5VDC will work. CTRL HAT can also be configured to accept relays with other DC control voltages by using a dedicated power supply (see [isolating the relays](#isolating-the-relays)).
 
-### Zero Cross Turn On (Resistive Loads)
+### Zero-Cross Turn-On (Resistive Loads)
 
 * [Opto 22 MP240D4](https://uk.farnell.com/opto-22/mp240d4/ssr-4a-240vac/dp/7229082) - 4A 24-280Vrms
 * [Kudom KSD240D5-W](https://www.rapidonline.com/kudom-ksd240d5-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-zero-cross-turn-on-60-1575) - 5A 48-280Vrms
@@ -99,7 +100,7 @@ Any solid state relay which physically fits onto CTRL HAT and is suited to a con
 * [Crydom CX240D5](https://uk.farnell.com/sensata-crydom/cx240d5/ssr-5a-240vac-3-15vdc/dp/1200213) - 5A 12-280Vrms
 * [Crydom PowerFin PF240D25](https://uk.farnell.com/crydom/pf240d25/ssr-3-15vdc-12-280vac-25a/dp/1200285) - 25A 12-280Vrms - (see [maximum ratings](#maximum-ratings))
 
-### Random Turn On (Inductive Loads)
+### Random Turn-On (Inductive Loads)
 
 * [Kudom KSD240D5R-W](https://www.rapidonline.com/kudom-ksd240d5r-w-pcb-ssr-4-32vdc-input-48-280vac-5a-load-with-random-turn-on-60-1574) - 5A 48-280Vrms
 * [Crydom CX240D5R](https://uk.farnell.com/crydom/cx240d5r/ssr-5a-240vac/dp/1613825) - 5A 12-280Vrms
@@ -174,8 +175,9 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 | Raspberry Pi 1 Model B | &#x2714;&#xFE0F; |
 | Raspberry Pi 1 Model B+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 2 Model B | &#x2714;&#xFE0F; |
-| Raspberry Pi 3 Model B &amp; 3+ | &#x2714;&#xFE0F; |
-| Raspberry Pi 4 | &#x2714;&#xFE0F; |
+| Raspberry Pi 3 Model B | &#x2714;&#xFE0F; |
+| Raspberry Pi 3 Model B+ | &#x2714;&#xFE0F;<br>[*Note*](#poe-pins) |
+| Raspberry Pi 4 | &#x2714;&#xFE0F;<br>[*Note*](#poe-pins) |
 | Raspberry Pi Zero | &#x2714;&#xFE0F; |
 | Asus Tinker Board | &#x2714;&#xFE0F; |
 | Orange Pi | &#x2714;&#xFE0F; |
@@ -186,6 +188,19 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 </p>
 
 To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I2C communication.
+
+## PoE Pins
+
+The 4-pin PoE header introduced on Raspberry Pi 3B+ &amp; Raspberry Pi 4 does not foul CTRL HAT, however care must be taken to maximise clearance. This is especially important when using mains voltage with CTRL HAT, mains voltage can jump!
+
+There are number of solutions:
+
+1. Separate CTRL HAT from Raspberry Pi, try our [HAT RACK](https://plasmadan.com/hatrack) boards!
+2. Use an elevated socket, eg Samtec ESQ-120-12-L-D ([available here](https://www.toby.co.uk/board-to-board-pcb-connectors/254mm-sockets/esq-samtec-254mm-elevated-dual-row-socket-strip-2.29mm-contact-11.05mm-profile-12/ESQ-120-12-L-D/))
+3. Add a suitable insulating material over the PoE pins
+4. Use a PoE HAT with CTRL HAT
+5. Remove the PoE pins from the Raspberry Pi (not always ideal)
+6. Simply don't use relay CH0
 
 ## Mechanical
 
@@ -390,7 +405,7 @@ You should now be able to login via FTP.
 
 ## Where to Go From Here
 
-Integrating CTRL HAT with your own projects is easy, just follow any guide which uses the MCP23017 expander. We have written some example Python scripts to get you started (see [here](https://github.com/plasmadancom/CTRL-HAT/tree/master/python_examples)).
+Integrating CTRL HAT with your own projects is easy, just follow any guide which uses the MCP23017 expander. We have provided some example Python scripts to get you started (see [here](https://github.com/plasmadancom/CTRL-HAT/tree/master/python_examples)).
 
 You will need to install [WiringPi for Python](#install-wiringpi) to use them.
 
