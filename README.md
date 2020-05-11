@@ -123,7 +123,9 @@ Exceeding these limits may overload the PCB.
 
 ### Electrical Safety
 
-Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly. If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrican.
+Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly.
+
+If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrican and maintain at-least a 2mm air gap between all conductive parts of the Raspberry Pi ([source](http://www.creepage.com)). See [PoE header](#poe-header).
 
 ## Isolating the Relays
 <p align="center">
@@ -176,8 +178,8 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 | Raspberry Pi 1 Model B+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 2 Model B | &#x2714;&#xFE0F; |
 | Raspberry Pi 3 Model B | &#x2714;&#xFE0F; |
-| Raspberry Pi 3 Model B+ | &#x2714;&#xFE0F;<br>[*Note*](#poe-pins) |
-| Raspberry Pi 4 | &#x2714;&#xFE0F;<br>[*Note*](#poe-pins) |
+| Raspberry Pi 3 Model B+ | &#x2714;&#xFE0F;<br>[*Note*](#poe-header) |
+| Raspberry Pi 4 | &#x2714;&#xFE0F;<br>[*Note*](#poe-header) |
 | Raspberry Pi Zero | &#x2714;&#xFE0F; |
 | Asus Tinker Board | &#x2714;&#xFE0F; |
 | Orange Pi | &#x2714;&#xFE0F; |
@@ -189,9 +191,9 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 
 To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I2C communication.
 
-## PoE Pins
+## PoE Header
 
-The 4-pin PoE header introduced on Raspberry Pi 3B+ &amp; Raspberry Pi 4 does not foul CTRL HAT, however care must be taken to maximise clearance. This is especially important when using mains voltage with CTRL HAT, mains voltage can jump!
+CTRL HAT is compatible with Raspberry Pi 3B+ &amp; Raspberry Pi 4, however care must be taken to maximise [clearance](#electrical-safety) from the 4-pin PoE header.
 
 There are number of solutions:
 
