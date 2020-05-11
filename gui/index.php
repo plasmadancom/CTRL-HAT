@@ -3,7 +3,7 @@
 /*
  * index.php - CTRL HAT web GUI
  * 
- * Copyright (C) 2019 Dan Jones - https://plasmadan.com
+ * Copyright (C) 2020 Dan Jones - https://plasmadan.com
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -132,8 +132,8 @@ require (__DIR__.'/src/inc/functions.php');
         </div>
     </div>
     <div class="footer">
-        <p>Want to help make this GUI better? Head on over to our <a href="https://github.com/plasmadancom/CTRL-HAT">GitHub repository</a> and submit an Issue or a Pull Request!</p>
-        <p>Tweet us at <a href="https://twitter.com/Plasma_Dan">@Plasma_Dan</a>.</p>
+        <p>Spotted a problem? Submit an Issue or a Pull Request on our <a href="https://github.com/plasmadancom/CTRL-HAT">GitHub repository</a>!</p>
+        <p>Built by <a href="https://plasmadan.com">PlasmaDan</a>. Tweet us at <a href="https://twitter.com/Plasma_Dan">@Plasma_Dan</a>. Theme based on the awesome <a href="https://pinout.xyz">Pinout.xyz</a>.</p>
     </div>
 </body>
 <script src="src/js/scripts.js"></script>

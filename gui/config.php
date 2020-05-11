@@ -3,7 +3,7 @@
 /*
  * config.php - CTRL HAT gpio config for web GUI
  * 
- * Copyright (C) 2019 Dan Jones - https://plasmadan.com
+ * Copyright (C) 2020 Dan Jones - https://plasmadan.com
  * 
  * 
  * -----------------------------------------------------------------------------
