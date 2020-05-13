@@ -60,9 +60,9 @@ update_file "dtparam=i2c1" "dtparam=i2c1=on" "I2C bus 1" $CONFIG
 update_file "dtparam=i2c_baudrate" "dtparam=i2c_baudrate=400000" "I2C bus baudrate setting" $CONFIG
 
 
-echo "Update package lists and upgrade ..."
-apt-get update -y
-apt-get upgrade -y
+#echo "Update package lists and upgrade ..."
+#apt-get update -y
+#apt-get upgrade -y
 
 
 echo "Install CTRL HAT required packages ..."
