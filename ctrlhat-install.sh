@@ -3,11 +3,11 @@
 
 CONFIG="/boot/config.txt"
 VSFTPD_CONF="/etc/vsftpd.conf"
-INPUT="Please answer yes or no."
-FILES="https://github.com/plasmadancom/CTRL-HAT/trunk/gui"
+CONFIRM_INPUT="Please answer yes or no."
+GUI_FILES="https://github.com/plasmadancom/CTRL-HAT/trunk/gui"
 
-WEBROOT=false
-FTP=false
+INSTALL_WEBROOT=false
+INSTALL_FTP=false
 
 # Arguments: 1 search, 2 replace, 3 setting name, 4 file
 update_file() {
@@ -26,14 +26,14 @@ while true; do
     read -p "Install GUI at web root? This will empty the web root! [Y/n] " yn
     case $yn in
         [Yy]* )
-			WEBROOT=true
+			INSTALL_WEBROOT=true
 			break
 			;;
         [Nn]* )
 			echo "GUI will be installed in subdirectory: ctrlhat"
 			break
 			;;
-        * ) echo $INPUT;;
+        * ) echo $CONFIRM_INPUT;;
     esac
 done
 
@@ -42,11 +42,11 @@ while true; do
     read -p "Install vsftpd? [Y/n] " yn
     case $yn in
         [Yy]* )
-			VSFTPD=true
+			INSTALL_FTP=true
 			break
 			;;
         [Nn]* ) break;;
-        * ) echo $INPUT;;
+        * ) echo $CONFIRM_INPUT;;
     esac
 done
 
@@ -77,7 +77,7 @@ adduser pi i2c
 echo "Install CTRL HAT Web GUI ..."
 
 # Install at web root?
-if [ "$WEBROOT" = true ]
+if [ "$INSTALL_WEBROOT" = true ]
 	then
 		rm -rf /var/www/html/*
 		svn checkout $FILES /var/www/html
@@ -88,7 +88,7 @@ fi
 
 
 # Install vsftpd?
-if [ "$FTP" = true ]
+if [ "$INSTALL_FTP" = true ]
 	then
 		apt-get install vsftpd -y
 		chown -R pi /var/www
