@@ -2,9 +2,9 @@
 # ctrlhat-install.sh Easy installer for CTRL HAT
 
 CONFIG="/boot/config.txt"
-VSFTPD="/etc/vsftpd.conf"
+VSFTPD_CONF="/etc/vsftpd.conf"
 INPUT="Please answer yes or no."
-GUI="https://github.com/plasmadancom/CTRL-HAT/trunk/gui"
+FILES="https://github.com/plasmadancom/CTRL-HAT/trunk/gui"
 
 WEBROOT=false
 FTP=false
@@ -80,10 +80,10 @@ echo "Install CTRL HAT Web GUI ..."
 if [ "$WEBROOT" = true ]
 	then
 		rm -rf /var/www/html/*
-		svn checkout $GUI /var/www/html
+		svn checkout $FILES /var/www/html
 else
 	mkdir /var/www/html/ctrlhat
-	svn checkout $GUI /var/www/html/ctrlhat
+	svn checkout $FILES /var/www/html/ctrlhat
 fi
 
 
@@ -92,8 +92,8 @@ if [ "$FTP" = true ]
 	then
 		apt-get install vsftpd -y
 		chown -R pi /var/www
-		update_file "write_enable" "write_enable=YES" "write_enable setting" $VSFTPD
-		update_file "force_dot_files" "force_dot_files=YES" "force_dot_files setting" $VSFTPD
+		update_file "write_enable" "write_enable=YES" "write_enable setting" $VSFTPD_CONF
+		update_file "force_dot_files" "force_dot_files=YES" "force_dot_files setting" $VSFTPD_CONF
 		service vsftpd restart
 fi
 
