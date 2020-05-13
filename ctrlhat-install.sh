@@ -80,10 +80,10 @@ echo "Install CTRL HAT Web GUI ..."
 if [ "$INSTALL_WEBROOT" = true ]
 	then
 		rm -rf /var/www/html/*
-		svn checkout $FILES /var/www/html
+		svn checkout $GUI_FILES /var/www/html
 else
 	mkdir /var/www/html/ctrlhat
-	svn checkout $FILES /var/www/html/ctrlhat
+	svn checkout $GUI_FILES /var/www/html/ctrlhat
 fi
 
 
