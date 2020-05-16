@@ -265,6 +265,11 @@ body {
     left: 20px;
 }
 
+.github {
+    position: absolute;
+    top: 20px;
+}
+
 .info {
     min-height: 480px;
     background: #ebe6d3;
@@ -438,7 +443,12 @@ body {
     }
     
     .wrapper {
+        padding-top: 50px;
         margin: -5% auto;
+    }
+    
+    .github {
+        right: 20px;
     }
 }
 
@@ -509,6 +519,10 @@ body {
 @media only screen and (min-width: 968px) {
     .board {
         transform: translate(-50%, 0) scale(0.55);
+    }
+    
+    .github {
+        left: 20px;
     }
 }
 

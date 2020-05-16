@@ -31,6 +31,7 @@ require (__DIR__.'/src/inc/functions.php');
     <title>CTRL HAT - Pinout Guide and Interactive GUI</title>
     <link href="src/css/styles.css" rel="stylesheet" />
     <script src="src/js/jquery.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
     <!-- Dev mode -->
@@ -41,6 +42,11 @@ require (__DIR__.'/src/inc/functions.php');
     <input id="i2c_addr" type="hidden" value="<?= $i2c_addr ?>">
     <div class="container">
         <div class="float wrapper">
+            <!-- GitHub Buttons -->
+            <div class="github">
+                <a class="github-button" href="https://github.com/plasmadancom/CTRL-HAT" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star plasmadancom/CTRL-HAT on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/plasmadancom/CTRL-HAT/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork plasmadancom/CTRL-HAT on GitHub">Fork on GitHub</a>
+            </div>
             <div class="board">
                 <div class="leds">
                     <div class="led led0"<?= show_hide(0) ?>></div>
