@@ -77,6 +77,8 @@ Alternatively, you can install manually. See our [setup guide](#setup-guide).
 
 Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for use with your project.
 
+Easy integration with [Home Assistant](https://www.home-assistant.io/integrations/mcp23017/).
+
 ## Arduino Wiring
 
 <p align="center">
@@ -410,6 +412,8 @@ You should now be able to login via FTP.
 Integrating CTRL HAT with your own projects is easy, just follow any guide which uses the MCP23017 expander. We have provided some example Python scripts to get you started (see [here](https://github.com/plasmadancom/CTRL-HAT/tree/master/python_examples)).
 
 You will need to install [WiringPi for Python](#install-wiringpi) to use them.
+
+Integration with [Home Assistant](https://www.home-assistant.io/integrations/mcp23017/) is easy thanks to the MCP23017.
 
 ## Config
 
