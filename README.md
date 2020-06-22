@@ -7,7 +7,7 @@
 * [Setup Guide](https://github.com/plasmadancom/HAT-GUI/#setup-guide)
 
 <p align="center">
-    <img alt="CTRL HAT" src="/img/ctrl-hat.jpg" width="50%">
+    <img alt="CTRL HAT" src="/img/ctrl-hat.jpg" width="500">
 </p>
 
 A Raspberry Pi HAT I/O board for use with solid state power relays (SSRs). Designed for switching high power loads without the need for costly extra hardware such as SSR modules or contactors.
@@ -32,7 +32,7 @@ CTRL HAT is ideally suited to automation or industrial control applications requ
 * Low Noise – SSRs generate minimal electrical noise compared to mechanical relays
 * High Speed – SSRs typically switch around 100 times faster than mechanical relays with no contact bounce
 * Reliability – High resistance to shock & vibration makes SSRs suitable for use in demanding environments
-* Opto-Isolated – Typical opto-osolation of > 4000VAC
+* Opto-Isolated – Typical opto-isolation of > 4000VAC
 * Zero Sparks – SSRs do not generate electrical arcs or sparks like mechanical relays
 * Zero Noise – No moving parts means completely silent switching operation
 * Life Expectancy – Increased operational cycles compared to mechanical relays
@@ -47,8 +47,8 @@ CTRL HAT is ideally suited to automation or industrial control applications requ
 
 ## Interactive Web GUI
 <p align="center">
-    <a href="https://ctrlhat.plasmadan.com" target="_blank" rel="nofollow">
-        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-web-gui.gif">
+    <a href="https://io.plasmadan.com/ctrlhat" target="_blank" rel="nofollow">
+        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-gui.gif">
     </a>
 </p>
 
@@ -86,16 +86,16 @@ We built CTRL HAT to work with any device featuring an I2C bus. It can be used w
 ## Known Compatible Solid State Relays
 
 <p align="center">
-    <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif" width="50%">
+    <img alt="CTRL HAT Animated" src="/img/ctrl-hat-animated.gif" width="500">
 </p>
 
 Any solid state relay which physically fits onto CTRL HAT and is suited to a control voltage of 5VDC will work. CTRL HAT can also be configured to accept relays with other DC control voltages by using a dedicated power supply (see [isolating the relays](#isolating-the-relays)).
 
-Consider carefully the type of relay to use with your application. Be sure to consider inrush currents and keep in-mind the thermals during operation. More relays = more heat so may need to de-rate or use fewer relays (See [thermal load tests](#thermal-load-tests)). *Proper thermal consideration, along with attention to the steady state current ratings, will result in trouble-free operation.* [Read more](https://www.automation.com/en-us/articles/2017/understanding-solid-state-relays).
+Consider carefully the type of relay to use with your application. Be sure to consider inrush currents and keep in-mind the thermals during operation. More relays = more heat so may need to de-rate or use fewer relays (see [thermal load tests](#thermal-load-tests)). *Proper thermal consideration, along with attention to the steady state current ratings, will result in trouble-free operation ([read more](https://www.automation.com/en-us/articles/2017/understanding-solid-state-relays)).* 
 
 Avoid generic solid state relays from China, they often state exaggerated ratings. They're cheap for a reason!
 
-**Note: This is a general list, the type of loads specified here may not apply to your application, read the datasheets!**
+**Note: The type of loads specified here may not apply to your application, read the datasheets!**
 
 ### Zero-Cross Turn-On (Resistive Loads)
 
@@ -132,12 +132,12 @@ Exceeding these limits may overload the PCB.
 
 ### Thermal Load Tests
 
+We tested CTRL HAT at various loads to demonstrate real-world usage. Your results may differ.
+
 Test conditions:
-* 5 minute duration @ ~240V AC constant load
+* 5 minute duration @ 240V AC constant load
 * 20°C ambient temperature
 * 15cm distance
-
-Note: These results are an example, meant to demonstrate real-world usuage. Your results may differ.
 
 #### 5A Load Test
 
@@ -161,17 +161,17 @@ Using one Crydom PowerFin PF240D25.
 
 <img alt="CTRL HAT 16A Load Test - Air Cooled" src="/img/ctrl-hat-load-test-10a-cooled.jpg" width="480">
 
-Using one Crydom PowerFin PF240D25, *forced air cooled*. Clearly a significant improvement over convection cooling.
+Using one Crydom PowerFin PF240D25, forced air cooled with an 80mm fan. Clearly a significant improvement over convection cooling.
 
 ### Electrical Safety
 
 Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly.
 
-If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrican and maintain at-least a 2mm air gap between all conductive parts of the Raspberry Pi ([source](http://www.creepage.com)). See [PoE header](#poe-header).
+If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrician and maintain at-least a 2mm air gap between all conductive parts of the Raspberry Pi ([source](http://www.creepage.com)). See [PoE header](#poe-header).
 
 ## Isolating the Relays
 <p align="center">
-    <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif" width="50%">
+    <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif" width="400">
 </p>
 
 Removing the LINK jumper from CTRL HAT disconnects 5V power to the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
@@ -230,7 +230,7 @@ CTRL HAT is fully compatible out of the box with most Raspberry Pi models and cl
 | Odroid | &#x2714;&#xFE0F; |
 
 <p align="center">
-    <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif" width="50%">
+    <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif" width="400">
 </p>
 
 To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. Use the SDA &amp; SDL breakout pins for I2C communication.
@@ -251,7 +251,7 @@ There are number of solutions:
 ## Mechanical
 
 <p align="center">
-    <img alt="Mechanical Drawing" src="/img/mechanical.gif" width="50%">
+    <img alt="Mechanical Drawing" src="/img/mechanical.gif" width="500">
 </p>
 
 ## Known Compatible Cases
