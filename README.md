@@ -159,9 +159,9 @@ Using one Crydom PowerFin PF240D25.
 
 #### 16A Load Test
 
-<img alt="CTRL HAT 16A Load Test - Air Cooled" src="/img/ctrl-hat-load-test-10a-cooled.jpg" width="480">
+<img alt="CTRL HAT 16A Load Test - Air Cooled" src="/img/ctrl-hat-load-test-16a-cooled.jpg" width="480">
 
-Using one Crydom PowerFin PF240D25, forced air cooled with an 80mm fan. Clearly a significant improvement over convection cooling.
+Using one Crydom PowerFin PF240D25, forced air cooled with an 80mm fan.
 
 ### Electrical Safety
 
