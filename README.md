@@ -137,7 +137,6 @@ We tested CTRL HAT at various loads to demonstrate real-world usage. Your result
 Test conditions:
 * 5 minute duration @ 240V AC constant load
 * 20°C ambient temperature
-* 15cm distance
 
 #### 5A Load Test
 
@@ -167,14 +166,14 @@ Using one Crydom PowerFin PF240D25, forced air cooled with an 80mm fan.
 
 Mains voltage electricity is extremely dangerous. There is significant risk of death through electrocution, fire or explosion if not wired and fused correctly.
 
-If using with mains voltages CTRL HAT must be installed in an electrically isolated enclosure by a qualified electrician and maintain at-least a 2mm air gap between all conductive parts of the Raspberry Pi ([source](http://www.creepage.com)). See [PoE header](#poe-header).
+If using with mains voltages CTRL HAT must be installed in an electrically insulated enclosure by a qualified electrician and maintain at-least a 2mm air gap between all conductive parts of the Raspberry Pi ([source](http://www.creepage.com)). See [PoE header](#poe-header).
 
 ## Isolating the Relays
 <p align="center">
     <img alt="Link Jumper Animated" src="/img/link-jumper-animated.gif" width="400">
 </p>
 
-Removing the LINK jumper from CTRL HAT disconnects 5V power to the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
+Removing the LINK jumper from CTRL HAT will disconnect 5V power to the solid state relays. This allows you to power the relays independently, but also gives you the option to use solid state relays with other DC control voltages (up to 30V). This opens up a huge range of additional compatible solid state relays for use with your project.
 
 ## Back-Powering *
 
@@ -211,23 +210,19 @@ __* Note: Back-powering is for CTRL HAT, not for Raspberry Pi. Remove the LINK j
 
 ## Device Compatibility
 
-CTRL HAT is fully compatible out of the box with most Raspberry Pi models and clones.
+CTRL HAT is fully compatible with all **40-way** Raspberry Pi models and clones.
 
 | Device Model | Compatibility |
 | --- | :---: |
-| Raspberry Pi Model A | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
-| Raspberry Pi Model B | &#x26A0;&#xFE0F;<br>Requires 26-way adaptor |
-| Raspberry Pi 1 Model A+ | &#x2714;&#xFE0F; |
-| Raspberry Pi 1 Model B | &#x2714;&#xFE0F; |
-| Raspberry Pi 1 Model B+ | &#x2714;&#xFE0F; |
+| Raspberry Pi 1 Model A+/B/B+ | &#x2714;&#xFE0F; |
 | Raspberry Pi 2 Model B | &#x2714;&#xFE0F; |
-| Raspberry Pi 3 Model B | &#x2714;&#xFE0F; |
 | Raspberry Pi 3 Model B+ | &#x2714;&#xFE0F;<br>[*Note*](#poe-header) |
 | Raspberry Pi 4 | &#x2714;&#xFE0F;<br>[*Note*](#poe-header) |
 | Raspberry Pi Zero | &#x2714;&#xFE0F; |
 | Asus Tinker Board | &#x2714;&#xFE0F; |
 | Orange Pi | &#x2714;&#xFE0F; |
 | Odroid | &#x2714;&#xFE0F; |
+| ATMegaZero | &#x2714;&#xFE0F; |
 
 <p align="center">
     <img alt="GPIO Voltage Jumper Animated" src="/img/gpio-voltage-jumper-animated.gif" width="400">
@@ -237,14 +232,14 @@ To use with Arduino or any other 5V device the 3V3 jumper must be moved to 5V. U
 
 ## PoE Header
 
-CTRL HAT is compatible with Raspberry Pi 3B+ &amp; Raspberry Pi 4, however care must be taken to maximise [clearance](#electrical-safety) from the 4-pin PoE header.
+While CTRL HAT is compatible with Raspberry Pi 3B+ &amp; Raspberry Pi 4, care must be taken to maximise [clearance](#electrical-safety) from the 4-pin PoE header.
 
 There are number of solutions:
 
 1. Separate CTRL HAT from Raspberry Pi, try our [HAT RACK](https://plasmadan.com/hatrack) boards!
 2. Use an elevated socket, eg Samtec ESQ-120-12-L-D ([available here](https://www.toby.co.uk/board-to-board-pcb-connectors/254mm-sockets/esq-samtec-254mm-elevated-dual-row-socket-strip-2.29mm-contact-11.05mm-profile-12/ESQ-120-12-L-D/))
 3. Add a suitable insulating material over the PoE pins
-4. Use a PoE HAT with CTRL HAT
+4. Use a [PoE HAT](https://www.raspberrypi.org/products/poe-hat/) with CTRL HAT
 5. Remove the PoE pins from the Raspberry Pi (not always ideal)
 6. Simply don't use relay CH0
 
@@ -256,7 +251,10 @@ There are number of solutions:
 
 ## Known Compatible Cases
 
-* ModMyPi Modular RPi 2/3 Case
+* [The Pi Hut Modular RPi 2/3 Case](https://thepihut.com/products/modmypi-modular-rpi-b-plus-case-black)
+* [The Pi Hut Modular Raspberry Pi 4 Case](https://thepihut.com/products/modular-raspberry-pi-4-case-black)
+* [The Pi Hut Cluster HAT Case v3.0](https://thepihut.com/products/cluster-hat-case)
+* [Multicomp Raspberry Pi HAT Case](https://thepihut.com/products/raspberry-pi-hat-case)
 
 There are countless cases compatible with CTRL HAT, limited only by the height of the solid state relays used.
 
