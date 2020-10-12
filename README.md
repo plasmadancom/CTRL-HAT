@@ -71,7 +71,7 @@ Alternatively, you can install manually. See our [setup guide](https://github.co
 
 ## Built-in GPIO Expander
 
-Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-4 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for use with your project.
+Featuring the well-documented MCP23017 16 channel GPIO expander, CTRL HAT is easy to setup and control via I2C. Channels 0-3 (Group A) are utilised for the solid state relays, giving you an extra 12 GPIOs for use with your project.
 
 Easy integration with [Home Assistant](https://www.home-assistant.io/integrations/mcp23017/).
 
