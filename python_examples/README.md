@@ -10,7 +10,7 @@ sudo pip install wiringpi
 
 ## relay_chaser.py
 
-An infinate Knight Rider style chaser sequence which works with WiringPi.
+An infinite Knight Rider style chaser sequence which works with WiringPi.
 
 ```
 sudo wget https://github.com/plasmadancom/CTRL-HAT/raw/master/python_examples/relay_chaser.py
