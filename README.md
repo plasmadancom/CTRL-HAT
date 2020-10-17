@@ -236,13 +236,14 @@ While CTRL HAT is compatible with Raspberry Pi 3B+ &amp; Raspberry Pi 4, care mu
 
 There are number of solutions:
 
-1. Separate CTRL HAT from Raspberry Pi, try our [HAT RACK](https://plasmadan.com/hatrack) boards!
+1. Separate CTRL HAT from Raspberry Pi, try our [HAT RACK](https://github.com/plasmadancom/HAT-RACK) boards!
 2. Add a suitable insulating material over the PoE pins
 3. Use a [PoE HAT](https://www.raspberrypi.org/products/poe-hat/) with CTRL HAT
 4. Remove the PoE pins from the Raspberry Pi (not always ideal)
 5. Simply don't use relay CH0
 
-## Mechanical
+## Dimensions
+
 
 <p align="center">
     <img alt="Mechanical Drawing" src="/img/mechanical.gif" width="500">
