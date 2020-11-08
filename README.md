@@ -49,7 +49,7 @@ CTRL HAT is ideally suited to automation or industrial control applications requ
 
 <p align="center">
     <a href="https://io.plasmadan.com/ctrlhat/" target="_blank" rel="nofollow">
-        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-mockup.gif">
+        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-mockup.gif" width="600">
     </a>
 </p>
 
