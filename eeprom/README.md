@@ -57,6 +57,23 @@ Write to EEPROM.
 sudo ./eepflash.sh -w -t=24c32 -f=ctrl-hat.eep
 ```
 
+## Testing
+
+Reboot to load the device-tree from the EEPROM.
+
+```
+sudo reboot
+```
+
+Read product name from the EEPROM.
+
+```
+cd /proc/device-tree/hat/
+more product
+```
+
+You should see the product name: CTRL HAT.
+
 ## Reference
 
 [HOWTO: Raspi HAT EEPROM and device-tree](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=108134)
