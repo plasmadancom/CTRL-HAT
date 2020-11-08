@@ -1,6 +1,6 @@
 # CTRL HAT
 
-* [Web GUI Live Demo](https://io.plasmadan.com/ctrlhat)
+* [Web GUI Live Demo](https://io.plasmadan.com/ctrlhat/)
 * [Easy Installer](#easy-installer)
 * [Arduino Wiring](#arduino-wiring)
 * [Known Compatible Relays](#known-compatible-solid-state-relays)
@@ -46,15 +46,16 @@ CTRL HAT is ideally suited to automation or industrial control applications requ
 * Hazardous locations
 
 ## Interactive Web GUI
+
 <p align="center">
-    <a href="https://io.plasmadan.com/ctrlhat" target="_blank" rel="nofollow">
-        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-gui.gif">
+    <a href="https://io.plasmadan.com/ctrlhat/" target="_blank" rel="nofollow">
+        <img alt="CTRL HAT Web GUI" src="/img/ctrl-hat-mockup.gif">
     </a>
 </p>
 
 Once installed on your Raspberry Pi, this interactive GUI allows quick &amp; easy control of your CTRL HAT without the need for any coding. It is designed to be both a user guide &amp; quick reference to the CTRL HAT pinout. The GUI is fully responsive and adapts to any screen size.
 
-Check-out the [Live Demo.](https://io.plasmadan.com/ctrlhat)
+Check-out the [Live Demo.](https://io.plasmadan.com/ctrlhat/)
 
 ## Easy Installer
 
