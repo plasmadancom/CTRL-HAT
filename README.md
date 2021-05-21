@@ -4,6 +4,7 @@
 * [Easy Installer](#easy-installer)
 * [Arduino Wiring](#arduino-wiring)
 * [Known Compatible Relays](#known-compatible-solid-state-relays)
+* [Schematic](https://github.com/plasmadancom/CTRL-HAT/blob/master/docs/ctrl-hat-v1.2-schematic.pdf)
 * [Setup Guide](https://github.com/plasmadancom/HAT-GUI/#setup-guide)
 
 <p align="center">
@@ -247,7 +248,9 @@ There are number of solutions:
 
 
 <p align="center">
-    <img alt="Mechanical Drawing" src="/img/mechanical.gif" width="500">
+    <a href="https://raw.githubusercontent.com/plasmadancom/CTRL-HAT/master/img/ctrl-hat-v1.2-dimensions.svg">
+        <img alt="Mechanical Drawing" src="/img/ctrl-hat-v1.2-dimensions.svg" width="600">
+    </a>
 </p>
 
 ## Known Compatible Cases
